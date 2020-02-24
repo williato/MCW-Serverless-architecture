@@ -645,7 +645,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In Solution Explorer, TollBooth is selected, and in its right-click menu, Publish is selected.](media/image39.png 'Solution Explorer ')
 
-3. In the Pick a Publish Target window that appears, make sure **Azure Functions Consumption Plan** is selected, choose the **Select Existing** radio button, check the **Run from package file** checkbox, then select **Publish**.
+3. In the Pick a Publish Target window that appears, make sure **Azure Functions Consumption Plan** is selected, choose the **Select Existing** radio button, check the **Run from package file** checkbox, then select **Create Profile**.
 
     ![In the Publish window, the Azure Function App tile is selected. Under this, both the Select Existing radio button and the Publish button are selected.](media/vs-publish-function.png 'Publish window')
 
@@ -689,7 +689,7 @@ In this task, you will publish the Function App from the starter project in Visu
 
     f. Select only the **Blob Created** from the event types dropdown list.
 
-    g. Leave Web Hook as the Endpoint Type.
+    g. Leave Azure Function as the Endpoint Type.
 
 13. Leave the remaining fields at their default values and select **Create**.
 
