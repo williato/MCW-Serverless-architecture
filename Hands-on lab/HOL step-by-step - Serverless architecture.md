@@ -1268,9 +1268,9 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 1. Open the Azure Function App you created whose name ends with **FunctionApp**, or the name you specified for the Function App containing the ProcessImage function.
 
-2. Select **Deployment Center** underneath the **Platform features** tab.
+2. Select **Container settings** underneath the **Platform features** tab.
 
-    ![In the TollBoothFunctionApp blade, on the Platform features tab, under Code Deployment, Deployment Center is selected.](media/functionapp-deployment-center-link.png 'TollBoothFunctionApp blade')
+    ![In the TollBoothFunctionApp blade, on the Platform features tab, under Code Deployment, Deployment Center is selected.](media/functionapp-container-settings-link.png 'TollBoothFunctionApp blade')
 
 3. Select **GitHub** in the **Deployment Center** blade. Enter your GitHub credentials if prompted. Select **Continue**.
 
