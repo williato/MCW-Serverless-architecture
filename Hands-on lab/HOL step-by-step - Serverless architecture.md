@@ -1094,7 +1094,7 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
     ![Under Collections, NeedsManualReview is expanded, and Documents is selected. On the Documents tab, a document is selected, and to the side, the first four properties of the document (fileName, licencePlateText, timeStamp, and resolved) are circled.](media/data-explorer-needsreview.png 'Tollbooth - Data Explorer blade')
 
-7. Right-click on the **Processed** collection and select **New SQL Query**.
+7. Select the ellipses (...) next to the **Processed** collection and select **New SQL Query**.
 
     ![Under Collections, LicencePlates is expanded, and Processed is selected. From its right-click menu, New SQL Query is selected.](media/data-explorer-new-sql-query.png 'Tollbooth - Data Explorer blade')
 
@@ -1104,7 +1104,7 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
     SELECT VALUE COUNT(1) FROM c WHERE c.exported = false
     ```
 
-9. Execute the query and observe the results. In our case, we have 1,369 processed documents that need to be exported.
+9. Execute the query and observe the results. In our case, we have 669 processed documents that need to be exported.
 
     ![On the Query 1 tab, under Execute Query, the previously defined SQL query displays. Under Results, the number 1369 is highlighted.](media/cosmos-query-results.png 'Query 1 tab')
 
