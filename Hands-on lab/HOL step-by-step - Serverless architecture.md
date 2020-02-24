@@ -109,7 +109,7 @@ The solution begins with vehicle photos being uploaded to an Azure Storage blobs
     - <https://www.visualstudio.com/vs/>
   - Azure development workload for Visual Studio
     - <https://docs.microsoft.com/azure/azure-functions/functions-develop-vs#prerequisites>
-  - .NET Framework 4.7 runtime (or higher) and .NET Core 2.1 (or higher)
+  - .NET Framework 4.7 runtime (or higher) and .NET Core 2.1 SDK (or higher)
     - <https://www.microsoft.com/net/download/windows>
 - Office 365 account. If required, you can sign up for an Office 365 trial at:
   - <https://portal.office.com/Signup/MainSignup15.aspx?Dap=False&QuoteId=79a957e9-ad59-4d82-b787-a46955934171&ali=1>
@@ -401,17 +401,13 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
 6. After the Computer Vision API has completed provisioning, open the service by opening the **ServerlessArchitecture** resource group, and then selecting the **Computer Vision** **API** service name.
 
-7. Select **Overview** in the menu, and then copy the **Endpoint** value.
+7. Under Resource Management in the left-hand menu, select **Keys and Endpoint**.
 
-    ![In the TollboothOCR blade, in the pane, Overview is selected. In the  pane, the copy button next to the Endpoint URL is selected.](media/copy-computer-vision-endpoint.png 'TollboothOCR blade')
+8. Within the **Keys and Endpoint** blade, copy the **ENDPOINT** value and **KEY 1** value.
 
-8. Under Resource Management, select **Keys**.
+    ![In the TollboothOCR - Keys blade, under Resource Management, Keys and Endpoint is selected. The Copy button next to the Endpoint and Key 1 values are selected.](media/copy-computer-vision-key.png 'TollboothOCR - Keys blade')
 
-9. Within the **Keys** blade, copy the **Key 1** value.
-
-    ![In the TollboothOCR - Keys blade, under Resource Management, Keys is selected. The Copy button next to the Key 1 value is selected.](media/copy-computer-vision-key.png 'TollboothOCR - Keys blade')
-
-10. Paste the values into a text editor, such as Notepad, for later reference.
+9. Paste the values into a text editor, such as Notepad, for later reference.
 
 ### Task 6: Provision Azure Key Vault
 
