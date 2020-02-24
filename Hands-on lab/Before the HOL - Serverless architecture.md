@@ -28,7 +28,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - [Task 1: Create a new Azure Resource group](#task-1-create-a-new-azure-resource-group)
     - [Task 2: Set up a development environment](#task-2-set-up-a-development-environment)
     - [Task 3: Disable IE Enhanced Security](#task-3-disable-ie-enhanced-security)
-    - [Task 4: Install Google Chrome](#task-4-install-google-chrome)
+    - [Task 4: Install Microsoft Edge](#task-4-install-microsoft-edge)
     - [Task 5: Validate connectivity to Azure](#task-5-validate-connectivity-to-azure)
     - [Task 6: Download and explore the TollBooth starter solution](#task-6-download-and-explore-the-tollbooth-starter-solution)
 
@@ -126,15 +126,15 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    ![In the Internet Explorer Enhanced Security Configuration dialog box, under Administrators, the Off button is selected.](images/Setup/image7.png 'Internet Explorer Enhanced Security Configuration dialog box')
 
-### Task 4: Install Google Chrome
+### Task 4: Install Microsoft Edge
 
-> **Note**: Some aspects of this lab require the use of Google Chrome. You may find yourself blocked if using Internet Explorer later in the lab.
+> **Note**: Some aspects of this lab require the use of the new Microsoft Edge (Chromium edition) browser. You may find yourself blocked if using Internet Explorer later in the lab.
 
-1. Launch Internet Explorer and download [Google Chrome](https://www.google.com/chrome/).
+1. Launch Internet Explorer and download [Microsoft Edge](https://www.microsoft.com/edge).
 
-2. Follow the setup instructions and make sure you can run Chrome to navigate to any webpage.
+2. Follow the setup instructions and make sure you can run Edge to navigate to any webpage.
 
-> **Note**: Chrome is needed for one of the labs as Internet Explorer is not supported for some specific activities.
+> **Note**: Edge is needed for one of the labs as Internet Explorer is not supported for some specific activities.
 
 ### Task 5: Validate connectivity to Azure
 
