@@ -747,17 +747,17 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
     ```javascript
     module.exports = function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
+        context.log(typeof eventGridEvent);
+        context.log(eventGridEvent);
 
-    context.bindings.outputDocument = {
-        fileName: eventGridEvent.data['fileName'],
-        licensePlateText: eventGridEvent.data['licensePlateText'],
-        timeStamp: eventGridEvent.data['timeStamp'],
-        exported: false
-    };
+        context.bindings.outputDocument = {
+            fileName: eventGridEvent.data['fileName'],
+            licensePlateText: eventGridEvent.data['licensePlateText'],
+            timeStamp: eventGridEvent.data['timeStamp'],
+            exported: false
+        };
 
-    context.done();
+        context.done();
     };
     ```
 
@@ -787,7 +787,7 @@ In this task, you will add an Event Grid subscription to the SavePlateData funct
 
     g. Enter `savePlateData` for the new event type value. This will ensure this function is only triggered by this Event Grid type.
 
-    h. Leave Web Hook as the Endpoint Type.
+    h. Leave Azure Function as the Endpoint Type.
 
 3. Leave the remaining fields at their default values and select **Create**.
 
@@ -853,17 +853,17 @@ In this task, you will create a new function triggered by Event Grid and outputs
 
     ```javascript
     module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
+        context.log(typeof eventGridEvent);
+        context.log(eventGridEvent);
 
-    context.bindings.outputDocument = {
-        fileName: eventGridEvent.data['fileName'],
-        licensePlateText: '',
-        timeStamp: eventGridEvent.data['timeStamp'],
-        resolved: false
-    };
+        context.bindings.outputDocument = {
+            fileName: eventGridEvent.data['fileName'],
+            licensePlateText: '',
+            timeStamp: eventGridEvent.data['timeStamp'],
+            resolved: false
+        };
 
-    context.done();
+        context.done();
     };
     ```
 
@@ -893,7 +893,7 @@ In this task, you will add an Event Grid subscription to the QueuePlateForManual
 
     g. Enter `queuePlateForManualCheckup` for the new event type value. This will ensure this function is only triggered by this Event Grid type.
 
-    h. Leave Web Hook as the Endpoint Type.
+    h. Leave Azure Function as the Endpoint Type.
 
 3. Leave the remaining fields at their default values and select **Create**.
 
