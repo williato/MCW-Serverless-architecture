@@ -1138,13 +1138,13 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
     b. Specify the Resource Group **ServerlessArchitecture**.
 
-    c. Select the same **location** as your Resource Group.
+    c. Select the **Region** option for the location, then select the same **location** as your Resource Group.
 
     d. Select **Off** underneath Log Analytics.
 
-    ![In the Create logic app blade, fields are set to the previously defined settings.](media/image81.png 'Create logic app blade')
+    ![In the Create logic app blade, fields are set to the previously defined settings.](media/create-logic-app.png 'Create logic app blade')
 
-5. Select **Create**. Open the Logic App once it has been provisioned.
+5. Select **Review + create**, then select **Create**. Open the Logic App once it has been provisioned.
 
 6. In the Logic App Designer, scroll through the page until you locate the _Start with a common trigger_ section. Select the **Recurrence** trigger.
 
@@ -1162,7 +1162,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
 10. Select your Function App whose name ends in **FunctionApp**, or contains the ExportLicensePlates function.
 
-    ![Under Azure Functions, in the search results list, Azure Functions (TollBoothFunctionApp) is selected.](media/image86.png 'Logic App Designer Azure Functions section')
+    ![Under Azure Functions, in the search results list, Azure Functions (TollBoothFunctionApp) is selected.](media/logic-app-function-app-action.png 'Logic App Designer Azure Functions section')
 
 11. Select the **ExportLicensePlates** function from the list.
 
@@ -1182,7 +1182,7 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
     ![Under the Conditions field is an If true (green checkmark) section, and an if false (red x) section. In the If false section, Add an action is selected.](media/logicapp-condition-false-add.png 'Logic App Designer Condition fields if true/false ')
 
-15. Enter **Send an email** in the filter box, then select the **Send an email** action for Office 365 Outlook.
+15. Enter **Send an email** in the filter box, then select the **Send an email (V2)** action for Office 365 Outlook.
 
     ![From the Actions list, Office 365 Outlook (Send an email) is selected.](media/logicapp-send-email.png 'Office 365 Outlook Actions list')
 
