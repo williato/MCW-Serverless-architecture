@@ -645,11 +645,13 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In Solution Explorer, TollBooth is selected, and in its right-click menu, Publish is selected.](media/image39.png 'Solution Explorer ')
 
-3. In the Pick a Publish Target window that appears, make sure **Azure Functions Consumption Plan** is selected, choose the **Select Existing** radio button, check the **Run from package file** checkbox, then select **Create Profile**.
+3. In the Pick a Publish Target window that appears, make sure **Azure Functions Consumption Plan** is selected, choose the **Select Existing** radio button, **uncheck** the **Run from package file** checkbox, then select **Create Profile**.
 
     ![In the Publish window, the Azure Function App tile is selected. Under this, both the Select Existing radio button and the Publish button are selected.](media/vs-publish-function.png 'Publish window')
 
     > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
+
+    > **Note**: We do not want to run from a package file, because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
 
 4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **ServerlessArchitecture** resource group and select the Function App whose name ends with **FunctionApp**.
 
@@ -1378,9 +1380,9 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 1. Open your ServerlessArchitecture resource group in the Azure portal, then select your **Storage account** you had provisioned to store uploaded photos and exported CSV files.
 
-2. In the Overview pane of your storage account, select **Blobs**.
+2. In the Overview pane of your storage account, select **Containers**.
 
-    ![Under Services, Blobs is selected.](media/image116.png 'Services section')
+    ![In the Overview blade, Containers is selected.](media/storage-containers.png 'Services section')
 
 3. Select the **export** container.
 
