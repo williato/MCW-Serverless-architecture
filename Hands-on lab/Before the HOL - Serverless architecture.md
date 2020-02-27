@@ -64,19 +64,19 @@ In this exercise, you will set up your environment you will use for the rest of 
 
 3. Specify the name of the resource group as **ServerlessArchitecture**, and choose the Azure region to which you want to deploy the lab. This resource group will be used throughout the rest of the lab. Select **Review + Create**. This will show you a summary of changes. Select **Create** to create the resource group.
 
-   ![In the Resource group blade, the Resource group name field displays ServerlessArchtecture.](images/Setup/image10.png 'Resource group blade')
+   ![In the Create a resource group blade, the Resource group field displays ServerlessArchitecture.](images/Setup/image10.png 'Resource group blade')
 
 ### Task 2: Set up a development environment
 
 If you do not have a machine with Visual Studio Community 2019 (or greater) and the Azure development workload, complete this task.
 
-1. Create a virtual machine (VM) in Azure using the Visual Studio Community 2019 on Windows Server 2016 (x64) image. A Windows 10 image will work as well. **Note:** Your Azure subscription must include MSDN offers to create a VM with Visual Studio pre-loaded.
+1. Create a virtual machine (VM) in Azure using the Visual Studio Community 2019 on Windows Server 2019 (x64) image. A Windows 10 image will work as well. **Note:** Your Azure subscription must include MSDN offers to create a VM with Visual Studio pre-loaded.
 
-   ![In Azure Portal, in the search field, Visual Studio Community 2019 on Windows Server 2019 (x64) is typed. Under Results, Visual Studio Community 2019 on Windows Server 2016 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
+   ![In Azure Portal, in the search field, Visual Studio Community 2019 (latest release) on Windows Server 2019 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
 
    a. Select **+ Create a resource**.
 
-   b. Type **Visual Studio 2019**.
+   b. Type **Visual Studio 2019 Latest**
 
    c. Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
@@ -92,11 +92,11 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    i. Select your VM size.
 
-   > **Note**: It is highly recommended to use a D4s or DS2 instance size for this VM.
+   > **Note**: It is highly recommended to use a D4s or DS2_v2 instance size for this VM.
 
-   j. For username, type **demouser**.
+   j. For username, type **demouser**
 
-   k. For password, type **Password.1!!**.
+   k. For password, type **Password.1!!**
 
    n. Select **Allow selected ports**.
 
@@ -118,9 +118,9 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    ![Local Server is selected from the Server Manager menu.](images/Setup/image5.png 'Server Manager menu')
 
-4. On the side of the pane, for **IE Enhanced Security Configuration**, if it displays **On** select it.
+4. On the side of the pane, for **IE Enhanced Security Configuration**, if it displays **On**, select it.
 
-   ![Screenshot of IE Enhanced Security Configuration, which is set to On.](images/Setup/image6.png 'IE Enhanced Security Configuration')
+   ![The IE Enhanced Security Configuration setting is set to On. The On item is selected.](images/Setup/image6.png 'IE Enhanced Security Configuration')
 
    - Change to **Off** for Administrators and select **OK**.
 
@@ -142,7 +142,7 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
 2. To validate connectivity to your Azure subscription, open **Cloud Explorer** from the **View** menu, and ensure that you can connect to your Azure subscription.
 
-   ![In Cloud Explorer, the list of Azure subscriptions is shown.](media/vs-cloud-explorer.png 'Cloud Explorer')
+   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](media/vs-cloud-explorer.png 'Cloud Explorer')
 
 ### Task 6: Download and explore the TollBooth starter solution
 
@@ -152,13 +152,13 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
-   ![Download .zip containing the repository](images/Setup/github-download-repo.png)
+   ![On the GitHub Repository web page, the Clone or Download drop down is expanded with the Download ZIP button selected.](images/Setup/github-download-repo.png)
 
-4. Unzip the contents to the folder **C:\\ServerlessMCW\\**.
+4. Unzip the contents to the folder **C:\\ServerlessMCW\\**
 
-   ![The extraction path is highlighted.](media/zip-extract.png 'Extract Compressed Folders')
+   ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](media/zip-extract.png 'Extract Compressed Folders')
 
-5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`.
+5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`
 
 6. From the **TollBooth** folder, open the Visual Studio Solution file: **TollBooth.sln**. Notice the solution contains the following projects:
 
