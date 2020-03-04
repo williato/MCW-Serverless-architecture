@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-November 2019
+February 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 **Contents**
 
@@ -28,7 +28,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - [Task 1: Create a new Azure Resource group](#task-1-create-a-new-azure-resource-group)
     - [Task 2: Set up a development environment](#task-2-set-up-a-development-environment)
     - [Task 3: Disable IE Enhanced Security](#task-3-disable-ie-enhanced-security)
-    - [Task 4: Install Google Chrome](#task-4-install-google-chrome)
+    - [Task 4: Install Microsoft Edge](#task-4-install-microsoft-edge)
     - [Task 5: Validate connectivity to Azure](#task-5-validate-connectivity-to-azure)
     - [Task 6: Download and explore the TollBooth starter solution](#task-6-download-and-explore-the-tollbooth-starter-solution)
 
@@ -64,47 +64,47 @@ In this exercise, you will set up your environment you will use for the rest of 
 
 3. Specify the name of the resource group as **ServerlessArchitecture**, and choose the Azure region to which you want to deploy the lab. This resource group will be used throughout the rest of the lab. Select **Review + Create**. This will show you a summary of changes. Select **Create** to create the resource group.
 
-   ![In the Resource group blade, the Resource group name field displays ServerlessArchtecture.](images/Setup/image10.png 'Resource group blade')
+   ![In the Create a resource group blade, the Resource group field displays ServerlessArchitecture.](images/Setup/image10.png 'Resource group blade')
 
 ### Task 2: Set up a development environment
 
 If you do not have a machine with Visual Studio Community 2019 (or greater) and the Azure development workload, complete this task.
 
-1. Create a virtual machine (VM) in Azure using the Visual Studio Community 2019 on Windows Server 2016 (x64) image. A Windows 10 image will work as well. **Note:** Your Azure subscription must include MSDN offers to create a VM with Visual Studio pre-loaded.
+1. Create a virtual machine (VM) in Azure using the Visual Studio Community 2019 on Windows Server 2019 (x64) image. A Windows 10 image will work as well. **Note:** Your Azure subscription must include MSDN offers to create a VM with Visual Studio pre-loaded.
 
-   ![In Azure Portal, in the search field, Visual Studio Community 2019 on Windows Server 2019 (x64) is typed. Under Results, Visual Studio Community 2019 on Windows Server 2016 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
+   ![In Azure Portal, in the search field, Visual Studio Community 2019 (latest release) on Windows Server 2019 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
 
-   a. Select **+ Create a resource**.
+   - Select **+ Create a resource**.
 
-   b. Type **Visual Studio 2019**.
+   - Type **Visual Studio 2019 Latest**
 
-   c. Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
+   - Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
-   d. Select **Create**.
+   - Select **Create**.
 
-   e. Select your subscription and recently created resource group.
+   - Select your subscription and recently created resource group.
 
-   f. For Virtual machine name, type **MainVM**, or a different name that is unique.
+   - For Virtual machine name, type **MainVM**, or a different name that is unique.
 
-   g. Leave availability option as **No infrastructure redundancy required**.
+   - Leave availability option as **No infrastructure redundancy required**.
 
-   h. Ensure the image is **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
+   - Ensure the image is **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
-   i. Select your VM size.
+   - Select your VM size.
 
-   > **Note**: It is highly recommended to use a D4s or DS2 instance size for this VM.
+   > **Note**: It is highly recommended to use a D4s or DS2_v2 instance size for this VM.
 
-   j. For username, type **demouser**.
+   - For username, type **demouser**
 
-   k. For password, type **Password.1!!**.
+   - For password, type **Password.1!!**
 
-   n. Select **Allow selected ports**.
+   - Select **Allow selected ports**.
 
-   o. For the inbound ports, select **RDP (3389)**.
+   - For the inbound ports, select **RDP (3389)**.
 
-   p. Select **Review + create**.
+   - Select **Review + create**.
 
-   q. Select **Create**.
+   - Select **Create**.
 
 ### Task 3: Disable IE Enhanced Security
 
@@ -118,23 +118,23 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    ![Local Server is selected from the Server Manager menu.](images/Setup/image5.png 'Server Manager menu')
 
-4. On the side of the pane, for **IE Enhanced Security Configuration**, if it displays **On** select it.
+4. On the side of the pane, for **IE Enhanced Security Configuration**, if it displays **On**, select it.
 
-   ![Screenshot of IE Enhanced Security Configuration, which is set to On.](images/Setup/image6.png 'IE Enhanced Security Configuration')
+   ![The IE Enhanced Security Configuration setting is set to On. The On item is selected.](images/Setup/image6.png 'IE Enhanced Security Configuration')
 
    - Change to **Off** for Administrators and select **OK**.
 
    ![In the Internet Explorer Enhanced Security Configuration dialog box, under Administrators, the Off button is selected.](images/Setup/image7.png 'Internet Explorer Enhanced Security Configuration dialog box')
 
-### Task 4: Install Google Chrome
+### Task 4: Install Microsoft Edge
 
-> **Note**: Some aspects of this lab require the use of Google Chrome. You may find yourself blocked if using Internet Explorer later in the lab.
+> **Note**: Some aspects of this lab require the use of the new Microsoft Edge (Chromium edition) browser. You may find yourself blocked if using Internet Explorer later in the lab.
 
-1. Launch Internet Explorer and download [Google Chrome](https://www.google.com/chrome/).
+1. Launch Internet Explorer and download [Microsoft Edge](https://www.microsoft.com/edge).
 
-2. Follow the setup instructions and make sure you can run Chrome to navigate to any webpage.
+2. Follow the setup instructions and make sure you can run Edge to navigate to any webpage.
 
-> **Note**: Chrome is needed for one of the labs as Internet Explorer is not supported for some specific activities.
+> **Note**: Edge is needed for one of the labs as Internet Explorer is not supported for some specific activities.
 
 ### Task 5: Validate connectivity to Azure
 
@@ -142,7 +142,7 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
 2. To validate connectivity to your Azure subscription, open **Cloud Explorer** from the **View** menu, and ensure that you can connect to your Azure subscription.
 
-   ![In Cloud Explorer, the list of Azure subscriptions is shown.](media/vs-cloud-explorer.png 'Cloud Explorer')
+   ![In Cloud Explorer, the list of Azure subscriptions is shown. A single subscription is highlighted and expanded in the list.](media/vs-cloud-explorer.png 'Cloud Explorer')
 
 ### Task 6: Download and explore the TollBooth starter solution
 
@@ -152,13 +152,13 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
-   ![Download .zip containing the repository](images/Setup/github-download-repo.png)
+   ![On the GitHub Repository web page, the Clone or Download drop down is expanded with the Download ZIP button selected.](images/Setup/github-download-repo.png)
 
-4. Unzip the contents to the folder **C:\\ServerlessMCW\\**.
+4. Unzip the contents to the folder **C:\\ServerlessMCW\\**
 
-   ![The extraction path is highlighted.](media/zip-extract.png 'Extract Compressed Folders')
+   ![On the Extract Compressed (Zipped) Folders dialog window, the extraction path is highlighted in the Files will be extracted to this folder field.](media/zip-extract.png 'Extract Compressed Folders')
 
-5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`.
+5. Navigate to `C:\ServerlessMCW\MCW-Serverless-architecture-master\Hands-on lab\starter`
 
 6. From the **TollBooth** folder, open the Visual Studio Solution file: **TollBooth.sln**. Notice the solution contains the following projects:
 
