@@ -155,7 +155,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     f. For replication, select **Locally-redundant storage (LRS)**.
 
-    g. Select the **Hot** for the access tier.
+    g. Select **Hot** for the access tier.
 
     ![Fields in the Create storage account blade are set to the previously defined values.](media/image12.png 'Create storage account blade')
 
@@ -219,7 +219,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
 7. Select **Next: Monitoring >**.
 
-    a. **Enable Application Insights**: Select **No** (we'll ad this later).
+    a. **Enable Application Insights**: Select **No** (we'll add this later).
 
     ![In the Monitoring tab of the Create Function App blade, the form fields are set to the previously defined values.](media/new-functionapp-net-monitoring.png "Function App Monitoring blade")
 
@@ -233,7 +233,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     b. **Resource Group**: Select **ServerlessArchitecture**.
 
-    c. **Name**: Unique value for the App name (ensure the green check mark appears). Provide a name similar to **TollBoothEvents**
+    c. **Name**: Unique value for the App name (ensure the green check mark appears). Provide a name similar to **TollBoothEvents**.
 
     d. **Publish**: Select **Code**.
 
@@ -257,7 +257,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
 13. Select **Next: Monitoring >**.
 
-    a. **Enable Application Insights**: Select **No** (we'll ad this later).
+    a. **Enable Application Insights**: Select **No** (we'll add this later).
 
     ![Fields in the Create Function App blade Monitoring tab are set to the previously defined values.](media/new-functionapp-net-monitoring.png "Function App Monitoring blade")
 
@@ -325,7 +325,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     ![Fields in the Azure Cosmos DB blade are set to the previously defined settings.](media/new-cosmosdb.png 'Azure Cosmos DB blade')
 
-4. Select **Review + create**, then select **Create**
+4. Select **Review + create**, then select **Create**.
 
 5. After the Azure Cosmos DB account has completed provisioning, open the account by opening the **ServerlessArchitecture** resource group, and then selecting the **Azure Cosmos DB** account name.
 
@@ -459,7 +459,7 @@ Azure Key Vault is used to securely store all secrets, such as database connecti
 
     When you are finished creating the secrets, your list should look similar to the following:
 
-    ![The listing of secrets is displayed matching the previous defined values.](media/key-vault-keys.png "Key Vault Secrets")
+    ![The listing of secrets is displayed matching the previously defined values.](media/key-vault-keys.png "Key Vault Secrets")
 
 ### Task 7: Retrieve the URI for each secret
 
@@ -521,7 +521,7 @@ In this task, you will apply application settings using the Microsoft Azure Port
 
     ![In the TollBoothFunctionApp blade on the Overview tab, under Configured features, the Configuration item is selected.](media/image34.png 'TollBoothFunctionApp blade')
 
-4. Scroll to the **Application settings** section. Use the **+ New application setting** link to create the following additional Key/Value pairs (the key names must exactly match those found in the table below). **Be sure to remove the curly braces (`{}`)**.:
+4. Scroll to the **Application settings** section. Use the **+ New application setting** link to create the following additional Key/Value pairs (the key names must exactly match those found in the table below). **Be sure to remove the curly braces (`{}`)**.
 
     |                          |                                                                                                                                                             |
     | ------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -1386,7 +1386,7 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 3. Select the **export** container.
 
-    ![export is selected under Name.](media/image117.png 'Export option')
+    ![Export is selected under Name.](media/image117.png 'Export option')
 
 4. You should see at least one recently uploaded CSV file. Select the filename to view its properties.
 
