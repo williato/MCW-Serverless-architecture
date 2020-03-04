@@ -92,11 +92,11 @@ Each whiteboard design session uses the following flow:
 
 Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements.
+- Customer's background, situation, needs and technical requirements
 
-- Current customer infrastructure and architecture.
+- Current customer infrastructure and architecture
 
-- Potential issues, objectives and blockers.
+- Potential issues, objectives and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -118,11 +118,11 @@ Design a solution and prepare to present the solution to the target customer aud
 
 Present solution to your customer:
 
-- Present solution.
+- Present solution
 
-- Respond to customer objections.
+- Respond to customer objections
 
-- Receive feedback.
+- Receive feedback
 
 **Wrap-up (15 minutes)**
 
