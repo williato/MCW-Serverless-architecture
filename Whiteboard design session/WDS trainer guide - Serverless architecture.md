@@ -555,9 +555,9 @@ _Monitoring and DevOps_
 
    Azure Key Vault can be used to Securely store and tightly control access to tokens, passwords, certificates, API keys, and other secrets. In addition, secrets that are stored in Azure Key Vault are centralized, giving the added benefits of only needing to update secrets in one place, such as an application key value after recycling the key for security purposes. Contoso can store their secrets in Azure Key Vault, then configure their Function Apps to securely connect to Azure Key Vault by performing the following steps:
 
-   1. Create a key vault and add secrets to it.
-   2. Create a system-assigned managed identity for each Azure Function App or Web App that needs to read from the vault.
-   3. Create an access policy in Key Vault with the "Get" secret permission, assigned to each of these application identities.
+  1. Create a key vault and add secrets to it.
+  2. Create a system-assigned managed identity for each Azure Function App or Web App that needs to read from the vault.
+  3. Create an access policy in Key Vault with the "Get" secret permission, assigned to each of these application identities.
 
    After these steps are completed, Contoso can update their application settings for their connected Function Apps and Web Apps, using Key Vault references for each secret in the form of `@Microsoft.KeyVault(SecretUri={referenceString})`. `{referenceString}` is the **SecretUri** URI of a secret in Key Vault, including a version. For example: `@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)`. The secret's value will automatically be extracted from Key Vault by the App service, and passed to the deployed application code, just like any other application setting.
 
