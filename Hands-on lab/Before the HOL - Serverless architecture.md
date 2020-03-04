@@ -74,37 +74,37 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    ![In Azure Portal, in the search field, Visual Studio Community 2019 (latest release) on Windows Server 2019 (x64) is selected.](media/select-vs2019-image.png 'Azure Portal')
 
-   a. Select **+ Create a resource**.
+   - Select **+ Create a resource**.
 
-   b. Type **Visual Studio 2019 Latest**
+   - Type **Visual Studio 2019 Latest**
 
-   c. Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
+   - Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
-   d. Select **Create**.
+   - Select **Create**.
 
-   e. Select your subscription and recently created resource group.
+   - Select your subscription and recently created resource group.
 
-   f. For Virtual machine name, type **MainVM**, or a different name that is unique.
+   - For Virtual machine name, type **MainVM**, or a different name that is unique.
 
-   g. Leave availability option as **No infrastructure redundancy required**.
+   - Leave availability option as **No infrastructure redundancy required**.
 
-   h. Ensure the image is **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
+   - Ensure the image is **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
-   i. Select your VM size.
+   - Select your VM size.
 
    > **Note**: It is highly recommended to use a D4s or DS2_v2 instance size for this VM.
 
-   j. For username, type **demouser**
+   - For username, type **demouser**
 
-   k. For password, type **Password.1!!**
+   - For password, type **Password.1!!**
 
-   n. Select **Allow selected ports**.
+   - Select **Allow selected ports**.
 
-   o. For the inbound ports, select **RDP (3389)**.
+   - For the inbound ports, select **RDP (3389)**.
 
-   p. Select **Review + create**.
+   - Select **Review + create**.
 
-   q. Select **Create**.
+   - Select **Create**.
 
 ### Task 3: Disable IE Enhanced Security
 
