@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-February 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -42,7 +42,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - <https://www.visualstudio.com/vs/>
   - Azure development workload for Visual Studio 2019
     - <https://docs.microsoft.com/azure/azure-functions/functions-develop-vs#prerequisites>
-  - .NET Framework 4.7 runtime (or higher) and .NET Core 2.1 (or higher)
+  - .NET Framework 4.7 runtime (or higher) and .NET Core 3.1
     - <https://www.microsoft.com/net/download/windows>
 - Office 365 account. If required, you can sign up for an Office 365 trial at:
   - <https://portal.office.com/Signup/MainSignup15.aspx?Dap=False&QuoteId=79a957e9-ad59-4d82-b787-a46955934171&ali=1>
@@ -76,7 +76,7 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    - Select **+ Create a resource**.
 
-   - Type **Visual Studio 2019 Latest**
+   - Type **Visual Studio 2019 Latest**.
 
    - Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
