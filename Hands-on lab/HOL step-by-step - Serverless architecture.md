@@ -109,7 +109,7 @@ The solution begins with vehicle photos being uploaded to an Azure Storage blobs
     - <https://www.visualstudio.com/vs/>
   - Azure development workload for Visual Studio.
     - <https://docs.microsoft.com/azure/azure-functions/functions-develop-vs#prerequisites>
-  - .NET Framework 4.7 runtime (or higher) and .NET Core 2.1 SDK (or higher).
+  - .NET Framework 4.7 runtime (or higher) and .NET Core 3.1 SDK.
     - <https://www.microsoft.com/net/download/windows>
 - Office 365 account. If required, you can sign up for an Office 365 trial at:
   - <https://portal.office.com/Signup/MainSignup15.aspx?Dap=False&QuoteId=79a957e9-ad59-4d82-b787-a46955934171&ali=1>

@@ -42,7 +42,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
     - <https://www.visualstudio.com/vs/>
   - Azure development workload for Visual Studio 2019
     - <https://docs.microsoft.com/azure/azure-functions/functions-develop-vs#prerequisites>
-  - .NET Framework 4.7 runtime (or higher) and .NET Core 2.1 (or higher)
+  - .NET Framework 4.7 runtime (or higher) and .NET Core 3.1
     - <https://www.microsoft.com/net/download/windows>
 - Office 365 account. If required, you can sign up for an Office 365 trial at:
   - <https://portal.office.com/Signup/MainSignup15.aspx?Dap=False&QuoteId=79a957e9-ad59-4d82-b787-a46955934171&ali=1>
