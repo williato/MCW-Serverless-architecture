@@ -76,7 +76,7 @@ If you do not have a machine with Visual Studio Community 2019 (or greater) and 
 
    - Select **+ Create a resource**.
 
-   - Type **Visual Studio 2019 Latest**
+   - Type **Visual Studio 2019 Latest**.
 
    - Select the **Visual Studio Community 2019 (latest) on Windows Server 2019 (x64)**.
 
