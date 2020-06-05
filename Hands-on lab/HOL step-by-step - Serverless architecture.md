@@ -199,7 +199,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     b. **Resource Group**: Select **ServerlessArchitecture**.
 
-    c. **Name**: Unique value for the App name (ensure the green check mark appears). Provide a name similar to **TollBoothFunctionApp**
+    c. **Name**: Unique value for the App name (ensure the green check mark appears). Provide a name similar to **TollBoothFunctionApp**.
 
     d. **Publish**: Select **Code**.
 
@@ -835,9 +835,9 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 4. Specify the following configuration options in the Azure Cosmos DB output form:
 
-    a. For database name, type **LicensePlates**
+    a. For database name, type **LicensePlates**.
 
-    b. For the collection name, type **Processed**
+    b. For the collection name, type **Processed**.
 
     ![Under Azure Cosmos DB output the following field values display: Document parameter name, outputDocument; Collection name, Processed; Database name, LicensePlates; Azure Cosmos DB account connection, tollbooths_DOCUMENTDB.](media/saveplatedata-cosmos-integration.png 'Azure Cosmos DB output section')
 
@@ -929,9 +929,9 @@ In this task, you will add an Azure Cosmos DB output binding to the QueuePlateFo
 
 2. Specify the following configuration options in the Azure Cosmos DB output form:
 
-    a. For database name, enter **LicensePlates**
+    a. For database name, enter **LicensePlates**.
 
-    b. For collection name, enter **NeedsManualReview**
+    b. For collection name, enter **NeedsManualReview**.
 
     c. Select the **Azure Cosmos DB account connection** you created earlier.
 
