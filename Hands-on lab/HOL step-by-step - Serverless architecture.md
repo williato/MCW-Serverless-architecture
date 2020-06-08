@@ -673,25 +673,27 @@ In this task, you will publish the Function App from the starter project in Visu
 
     ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/image39.png 'Solution Explorer ')
 
-3. In the Pick a publish target window, make sure **Azure Functions Consumption Plan** is selected, choose the **Select Existing** radio button, **uncheck** the **Run from package file (recommended)** checkbox, then select **Create Profile**.
+3. In the Publish window, select **Azure**, then select **Next**.
 
     ![In the Pick a publish target window, the Azure Functions Consumption Plan is selected in the left pane. In the right pane, the Select Existing radio button is selected and the Run from package file (recommended) checkbox is unchecked. The Create Profile button is also selected.](media/vs-publish-function.png 'Publish window')
 
     > **Note**: If you do not see the ability to publish to an Azure Function, you may need to update your Visual Studio instance.
 
-    > **Note**: We do not want to run from a package file, because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
-
-4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **ServerlessArchitecture** resource group and select the Function App whose name ends with **FunctionApp**.
+4. In the App Service form, select your **Subscription**, select **Resource Group** under **View**, then expand your **ServerlessArchitecture** resource group and select the Function App whose name ends with **FunctionApp**. Finally, **uncheck the `Run from package file` option**.
 
 5. Whatever you named the Function App when you provisioned it is fine. Just make sure it is the same one to which you applied the Application Settings in Task 1 of this exercise.
 
-    ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the ServerlessArchitecture folder is expanded, and TollBoothFunctionApp is selected.](media/image41.png 'App Service form')
+    ![In the App Service form, Resource Group displays in the View field, and in the tree-view below, the ServerlessArchitecture folder is expanded, and TollBoothFunctionApp is selected.](media/vs-publish-function2.png 'Publish window')
 
-6. After you select the Function App, select **OK**.
+    > **Note**: We do not want to run from a package file, because when we deploy from GitHub later on, the build process will be skipped if the Function App is configured for a zip deployment.
+
+6. After you select the Function App, select **Finish**.
 
     > **Note**: If prompted to update the functions version on Azure, select **Yes**.
 
 7. Select **Publish** to start the process. Watch the Output window in Visual Studio as the Function App publishes. When it is finished, you should see a message that says, `========== Publish: 1 succeeded, 0 failed, 0 skipped ==========`.
+
+    ![The Publish button is selected.](media/vs-publish-function3.png "Publish")
 
 8. Using a new tab or instance of your browser navigate to the Azure portal, <http://portal.azure.com>.
 
