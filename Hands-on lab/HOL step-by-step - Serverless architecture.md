@@ -1112,6 +1112,9 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 | **Description**       |                         **Links**                         |
 | About Azure Cosmos DB | <https://docs.microsoft.com/azure/cosmos-db/introduction> |
 
+
+> **Note:** Ensure that your IP address added to the IP list under Firewall of cosmosDB. If not then you'll not able to see the License Plates data in cosmosDB
+
 ### Task 1: Use the Azure Cosmos DB Data Explorer
 
 1. Open your Azure Cosmos DB account by opening the **ServerlessArchitecture** resource group, and then selecting the **Azure Cosmos DB account** name.
