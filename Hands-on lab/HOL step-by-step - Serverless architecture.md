@@ -619,6 +619,8 @@ There are a few components within the starter project that must be completed, ma
 
 > **Note:** Do **NOT** update the version of any NuGet package. This solution is built to function with the NuGet package versions currently defined within. Updating these packages to newer versions could cause unexpected results.
 
+> **Note:** Ensure the files should locate under (`C:\ServerlessMCW\`). If the files locate under (`C:\Users\workshop\Downloads\`) then later steps you'll get build issues `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters..`
+
 1. Navigate to the **TollBooth** project (`C:\ServerlessMCW\MCW-Serverless-architecture-master\hands-on-lab\starter\TollBooth\TollBooth.sln`) using the Solution Explorer of Visual Studio.
 
 2. From the Visual Studio **View** menu, select **Task List**.
@@ -1054,6 +1056,10 @@ Now that Application Insights has been integrated into your Function Apps, you c
 13. Right-click the **UploadImages** project in the Solution Explorer, then select **Debug** then **Start new instance** from the context menu.
 
     ![In Solution Explorer, the UploadImages project is selected. From the context menu, Debug then Start new instance is selected.](media/vs-debug-uploadimages.png 'Solution Explorer')
+
+    >**Note:** Ensure the files should locate under (`C:\ServerlessMCW\`). If the files locate under (`C:\Users\workshop\Downloads\`) then you'll get build issues `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters..`
+
+
 
 14. When the console window appears, enter **1** and press **ENTER**. This uploads a handful of car photos to the images container of your Blob storage account.
 
