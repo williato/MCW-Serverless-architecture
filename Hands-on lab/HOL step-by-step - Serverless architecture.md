@@ -1113,7 +1113,7 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 | About Azure Cosmos DB | <https://docs.microsoft.com/azure/cosmos-db/introduction> |
 
 
-> **Note:** Ensure that your IP address added to the IP list under Firewall of cosmosDB. If not then you'll not able to see the License Plates data in cosmosDB
+> **Note:** Ensure that your IP address is added to the IP list under the Firewall settings in your Azure Cosmos DB account. If not, then you will not able to see the License Plates data within Azure Cosmos DB.
 
 ### Task 1: Use the Azure Cosmos DB Data Explorer
 
