@@ -57,10 +57,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 6: Add an Azure Cosmos DB output to the QueuePlateForManualCheckup function](#task-6-add-an-azure-cosmos-db-output-to-the-queueplateformanualcheckup-function)
   - [Exercise 4: Monitor your functions with Application Insights](#exercise-4-monitor-your-functions-with-application-insights)
     - [Help references](#help-references-3)
-    - [Task 1: Provision an Application Insights instance](#task-1-provision-an-application-insights-instance)
-    - [Task 2: Enable Application Insights integration in your Function Apps](#task-2-enable-application-insights-integration-in-your-function-apps)
-    - [Task 3: Use the Live Metrics Stream to monitor functions in real time](#task-3-use-the-live-metrics-stream-to-monitor-functions-in-real-time)
-    - [Task 4: Observe your functions dynamically scaling when resource-constrained](#task-4-observe-your-functions-dynamically-scaling-when-resource-constrained)
+    - [Task 1: Use the Live Metrics Stream to monitor functions in real time](#task-1-use-the-live-metrics-stream-to-monitor-functions-in-real-time)
+    - [Task 2: Observe your functions dynamically scaling when resource-constrained](#task-2-observe-your-functions-dynamically-scaling-when-resource-constrained)
   - [Exercise 5: Explore your data in Azure Cosmos DB](#exercise-5-explore-your-data-in-azure-cosmos-db)
     - [Help references](#help-references-4)
     - [Task 1: Use the Azure Cosmos DB Data Explorer](#task-1-use-the-azure-cosmos-db-data-explorer)
@@ -223,15 +221,26 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
 7. Select **Next: Monitoring >**.
 
-    a. **Enable Application Insights**: Select **No** (we'll add this later).
+    a. **Enable Application Insights**: Select **Yes**.
+
+    b. **Application Insights**: Select **Create new**.
 
     ![In the Monitoring tab of the Create Function App blade, the form fields are set to the previously defined values.](media/new-functionapp-net-monitoring.png "Function App Monitoring blade")
 
-8. Select **Review + create**, then select **Create** to provision the new Function App.
+8. In the `Create new Application Insights` dialog, provide the following information, then select **OK**:
 
-9. **Repeat steps 1-3** to create a second Function App.
+    a. **Name**: Unique value for the App name similar to **TollboothMonitor** (ensure the green check mark appears).
+    b. **Location**: Select the same Azure region you selected for your Function App.
 
-10. Within the **Create Function App** blade *Basics* tab, specify the following configuration options:
+    ![The new Application Insights form is configured as described.](media/new-app-insights.png "Create new Application Insights")
+
+9. Select **Review + create**, then select **Create** to provision the new Function App.
+
+    ![The Review + create button is highlighted.](media/new-functionapp-net-monitoring-review.png "Function App Monitoring")
+
+10. **Repeat steps 1-3** to create a second Function App.
+
+11. Within the **Create Function App** blade *Basics* tab, specify the following configuration options:
 
     a. **Subscription**: Select your Azure subscription for this lab.
 
@@ -249,9 +258,9 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     ![Fields in the Create Function App blade Basics tab are set to the previously defined values.](media/new-functionapp-nodejs-basics.png 'Function App Basics blade')
 
-11. Select **Next: Hosting >**.
+12. Select **Next: Hosting >**.
 
-12. Within the **Hosting** blade, specify the following configuration options:
+13. Within the **Hosting** blade, specify the following configuration options:
 
     a. **Storage account**: Leave this option as **create new**.
 
@@ -261,13 +270,15 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     ![Fields in the Create Function App blade Hosting tab are set to the previously defined values.](media/new-functionapp-net-hosting.png "Function App Hosting blade")
 
-13. Select **Next: Monitoring >**.
+14. Select **Next: Monitoring >**.
 
-    a. **Enable Application Insights**: Select **No** (we'll add this later).
+    a. **Enable Application Insights**: Select **Yes**.
 
-    ![Fields in the Create Function App blade Monitoring tab are set to the previously defined values.](media/new-functionapp-net-monitoring.png "Function App Monitoring blade")
+    b. **Application Insights**: Select the Application Insights instance you created earlier when provisioning the .NET Function App (ex. **TollboothMonitor**).
 
-14. Select **Review + create**, then select **Create** to provision the new Function App.
+    ![Fields in the Create Function App blade Monitoring tab are set to the previously defined values.](media/new-functionapp-nodejs-monitoring.png "Function App Monitoring blade")
+
+15. Select **Review + create**, then select **Create** to provision the new Function App.
 
 ### Task 3: Provision the Event Grid topic
 
@@ -945,7 +956,7 @@ In this task, you will add an Azure Cosmos DB output binding to the QueuePlateFo
 
 **Duration**: 45 minutes
 
-Application Insights can be integrated with Azure Function Apps to provide robust monitoring for your functions. In this exercise, you will provision a new Application Insights account and configure your Function Apps to send telemetry to it.
+Application Insights can be integrated with Azure Function Apps to provide robust monitoring for your functions. In this exercise, you will view telemetry in the Application Insights account that you created when provisioning the Function Apps. Since you assigned the Application Insights account to the Function Apps when creating them, the Application Insights telemetry key was added to the Function App configuration for you.
 
 ### Help references
 
@@ -955,129 +966,53 @@ Application Insights can be integrated with Azure Function Apps to provide robus
 | Monitor Azure Functions using Application Insights            |     <https://docs.microsoft.com/azure/azure-functions/functions-monitoring>      |
 | Live Metrics Stream: Monitor & Diagnose with 1-second latency | <https://docs.microsoft.com/azure/application-insights/app-insights-live-stream> |
 
-### Task 1: Provision an Application Insights instance
+### Task 1: Use the Live Metrics Stream to monitor functions in real time
 
-1. Navigate to the Azure portal, <http://portal.azure.com>.
+1. Open the **TollboothMonitor** Application Insights instance from within your lab resource group.
 
-2. Select **+ Create a resource**, then type **application insights** into the search box on top. Select **Application Insights** from the results.
+    ![The Application Insights instance is highlighted in the resource group.](media/resource-group-application-insights.png "Application Insights")
 
-    ![In the Azure Portal menu pane, Create a resource is selected. In the New blade, application insights is typed in the search box, and Application insights is selected from the search results.](media/new-application-insights.png 'Azure Portal')
-
-3. Select the **Create** button on the **Application Insights overview** blade.
-
-4. On the **Application Insights** blade, specify the following configuration options:
-
-    a. **Name**: Unique value for the App name similar to **TollboothMonitor** (ensure the green check mark appears).
-
-    b. **Resource Group**: Select **ServerlessArchitecture**.
-
-    c. Select the same **Region** as your Resource Group region.
-
-    d. **Resource Mode**: Select **Classic**.
-
-    ![Fields in the Application Insights blade are set to the previously defined settings.](media/application-insights-form.png 'Application Insights blade')
-
-5. Select **Review + Create**, then choose **Create**.
-
-### Task 2: Enable Application Insights integration in your Function Apps
-
-Both of the Function Apps need to be updated with the Application Insights instrumentation key so they can start sending telemetry to your new instance.
-
-1. After the Application Insights account has completed provisioning, open the instance by opening the **ServerlessArchitecture** resource group, and then selecting the your recently created application insights instance.
-
-2. Copy the **Instrumentation Key** from the Essentials section of the **Overview** blade.
-
-    > **Note**: You may need to expand the **Essentials** section.
-
-    ![In Application Insights blade, Overview is selected in the left-hand menu. In the right pane, the copy button next to the Instrumentation Key is selected.](media/app-insights-key.png 'TollBoothMonitor blade')
-
-3. Open the Azure Function App you created whose name ends with **FunctionApp**, or the name you specified for the Function App containing the ProcessImage function.
-
-4. Select **Configuration** in the left-hand menu.
-
-5. Scroll down to the **Application settings** section. Use the **+ Add new setting** link and name the new setting **APPINSIGHTS_INSTRUMENTATIONKEY**. Paste the copied instrumentation key into its value field.
-
-    ![In the TollBoothFunctionApp blade, the + Add new setting link is selected. In the list of application settings, APPINSIGHTS_INSTRUMENTATIONKEY is selected along with its value.](media/app-insights-key-app-setting.png "Application settings")
-
-6. Select **OK**.
-
-7. Select **Save**.
-
-    ![Screenshot of the Save icon.](media/image36.png 'Save icon')
-
-8. Follow the steps above to add the APPINSIGHTS_INSTRUMENTATIONKEY setting to the function app that ends in **Events**.
-
-### Task 3: Use the Live Metrics Stream to monitor functions in real time
-
-Now that Application Insights has been integrated into your Function Apps, you can use the Live Metrics Stream to see the functions' telemetry in real time.
-
-1. Open the Azure Function App you created whose name ends with **FunctionApp**, or the name you specified for the Function App containing the ProcessImage function.
-
-2. Select **Application Insights** on the left-hand menu. Select **Turn on Application Insights** in the Application Insights blade.
-
-    ![In the TollBoothFunctionApp blade, under Configured features, the Application Insights link is selected.](media/image64.png 'TollBoothFunctionApp blade')
-
-3. Make sure **Enable** is selected. Notice that your app is already linked to your Application Insights instance at this point. Select **Apply**. Select **Yes** when prompted to apply monitoring settings.
-
-    ![Activation Insights is enabled.](media/enable-app-insights.png "Application Insights")
-
-4. Open the Azure Function App you created whose name ends with **Events**, or the name you specified for the Function App containing the NodeJS functions.
-
-5. Select **Application Insights** on the left-hand menu. Select **Turn on Application Insights** in the Application Insights blade.
-
-    ![In the TollBoothFunctionApp blade, under Configured features, the Application Insights link is selected.](media/events-function-app-turn-on-app-insights.png 'TollBoothFunctionApp blade')
-
-6. Make sure **Enable** is selected. Notice that your app is already linked to your Application Insights instance at this point. Select **Apply**. Select **Yes** when prompted to apply monitoring settings.
-
-    ![Activation Insights is enabled.](media/enable-app-insights-function.png "Application Insights")
-
-7. Select your Application Insights name under `Link to an Application Insights resource`.
-
-    ![The App Insights link is highlighted.](media/app-insights-link.png "Application Insights link")
-
-8. In Application Insights, select **Live Metrics Stream** underneath Investigate in the menu.
+2. In Application Insights, select **Live Metrics Stream** underneath Investigate in the menu.
 
     ![In the TollBoothMonitor blade, in the pane under Investigate, Live Metrics Stream is selected. ](media/live-metrics-link.png 'TollBoothMonitor blade')
 
-9. Leave the Live Metrics Stream open and go back to the starter app solution in Visual Studio.
+3. Leave the Live Metrics Stream open and go back to the starter app solution in Visual Studio.
 
-10. Navigate to the **UploadImages** project using the Solution Explorer of Visual Studio. Right-click on **UploadImages**, then select **Properties**.
+4. Navigate to the **UploadImages** project using the Solution Explorer of Visual Studio. Right-click on **UploadImages**, then select **Properties**.
 
     ![In Solution Explorer, the UploadImages project is expanded, and Properties is selected from the right-click context menu.](media/vs-uploadimages.png 'Solution Explorer')
 
-11. Select **Debug** in the left-hand menu, then paste the connection string for your Blob storage account into the **Command line arguments** text field. This will ensure that the required connection string is added as an argument each time you run the application. Additionally, the combination of adding the value here and the `.gitignore` file included in the project directory will prevent the sensitive connection string from being added to your source code repository in a later step.
+5. Select **Debug** in the left-hand menu, then paste the connection string for your Blob storage account into the **Command line arguments** text field. This will ensure that the required connection string is added as an argument each time you run the application. Additionally, the combination of adding the value here and the `.gitignore` file included in the project directory will prevent the sensitive connection string from being added to your source code repository in a later step.
 
     ![The Debug menu item and the command line arguments text field are highlighted.](media/vs-command-line-arguments.png "Properties - Debug")
 
-12. Save your changes.
+6. Save your changes.
 
-13. Right-click the **UploadImages** project in the Solution Explorer, then select **Debug** then **Start new instance** from the context menu.
+7. Right-click the **UploadImages** project in the Solution Explorer, then select **Debug** then **Start new instance** from the context menu.
 
     ![In Solution Explorer, the UploadImages project is selected. From the context menu, Debug then Start new instance is selected.](media/vs-debug-uploadimages.png 'Solution Explorer')
 
     >**Note:** Ensure the files are located under `C:\ServerlessMCW\`. If the files are located under a longer root path, such as `C:\Users\workshop\Downloads\`, then you will encounter build issues in later steps: `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.`
 
-
-
-14. When the console window appears, enter **1** and press **ENTER**. This uploads a handful of car photos to the images container of your Blob storage account.
+8. When the console window appears, enter **1** and press **ENTER**. This uploads a handful of car photos to the images container of your Blob storage account.
 
     ![A Command prompt window displays, showing images being uploaded.](media/image69.png 'Command prompt window')
 
-15. Switch back to your browser window with the Live Metrics Stream still open within Application Insights. You should start seeing new telemetry arrive, showing the number of servers online, the incoming request rate, CPU process amount, etc. You can select some of the sample telemetry in the list to the side to view output data.
+9. Switch back to your browser window with the Live Metrics Stream still open within Application Insights. You should start seeing new telemetry arrive, showing the number of servers online, the incoming request rate, CPU process amount, etc. You can select some of the sample telemetry in the list to the side to view output data.
 
     ![The Live Metrics Stream window displays information for the two online servers. Displaying line and point graphs including incoming requests, outgoing requests, and overall health. To the side is a list of Sample Telemetry information. ](media/image70.png 'Live Metrics Stream window')
 
-16. Leave the Live Metrics Stream window open once again, and close the console window for the image upload. Debug the UploadImages project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
+10. Leave the Live Metrics Stream window open once again, and close the console window for the image upload. Debug the UploadImages project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
 
     ![The Command prompt window displays with image uploading information.](media/image71.png 'Command prompt window')
 
-17. Switch back to the Live Metrics Stream window and observe the activity as the photos are uploaded. You can see the number of servers online, which translate to the number of Function App instances that are running between both Function Apps. You should also notice things such as a steady cadence for the Request Rate monitor, the Request Duration hovering below \~200ms second, and the Incoming Requests roughly matching the Outgoing Requests.
+11. Switch back to the Live Metrics Stream window and observe the activity as the photos are uploaded. You can see the number of servers online, which translate to the number of Function App instances that are running between both Function Apps. You should also notice things such as a steady cadence for the Request Rate monitor, the Request Duration hovering below \~200ms second, and the Incoming Requests roughly matching the Outgoing Requests.
 
     ![In the Live Metrics Stream window, two servers are online. Under Incoming Requests. the Request Rate heartbeat line graph is selected, as is the Request Duration dot graph. Under Overall Health, the Process CPU heartbeat line graph is also selected, the similarities between this graph and the Request Rate graph under Incoming Requests are highlighted for comparison.](media/image72.png 'Live Metrics Stream window')
 
-18. After this has run for a while, close the image upload console window once again, but leave the Live Metrics Stream window open.
+12. After this has run for a while, close the image upload console window once again, but leave the Live Metrics Stream window open.
 
-### Task 4: Observe your functions dynamically scaling when resource-constrained
+### Task 2: Observe your functions dynamically scaling when resource-constrained
 
 In this task, you will change the Computer Vision API to the Free tier. This will limit the number of requests to the OCR service to 10 per minute. Once changed, run the UploadImages console app to upload 1,000 images again. The resiliency policy programmed into the FindLicensePlateText.MakeOCRRequest method of the ProcessImage function will begin exponentially backing off requests to the Computer Vision API, allowing it to recover and lift the rate limit. This intentional delay will greatly increase the function's response time, thus causing the Consumption plan's dynamic scaling to kick in, allocating several more servers. You will watch all of this happen in real time using the Live Metrics Stream view.
 
