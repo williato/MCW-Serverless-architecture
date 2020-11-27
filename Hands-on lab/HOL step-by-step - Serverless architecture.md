@@ -159,9 +159,7 @@ In this exercise, you will provision a blob storage account using the Hot tier, 
 
     f. For replication, select **Locally-redundant storage (LRS)**.
 
-    g. Select **Hot** for the access tier.
-
-    ![Fields in the Create storage account blade are set to the previously defined values.](media/image12.png 'Create storage account blade')
+    ![Fields in the Create storage account blade are set to the previously defined values.](media/new-storage-account-form.png 'Create storage account blade')
 
 5. Select **Review + create**, then select **Create**.
 
