@@ -878,7 +878,7 @@ In this task, you will create a new function triggered by Event Grid and outputs
 
 4. Select **Create Function**.
 
-5. Select **Code + Test**, then replace the code in the new SavePlateData function with the following:
+5. Select **Code + Test**, then replace the code in the new QueuePlateForManualCheckup function with the following:
 
     ```javascript
     module.exports = async function(context, eventGridEvent) {
