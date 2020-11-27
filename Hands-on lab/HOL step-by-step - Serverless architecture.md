@@ -954,7 +954,7 @@ In this task, you will add an Azure Cosmos DB output binding to the QueuePlateFo
 
 ## Exercise 4: Monitor your functions with Application Insights
 
-**Duration**: 45 minutes
+**Duration**: 15 minutes
 
 Application Insights can be integrated with Azure Function Apps to provide robust monitoring for your functions. In this exercise, you will view telemetry in the Application Insights account that you created when provisioning the Function Apps. Since you assigned the Application Insights account to the Function Apps when creating them, the Application Insights telemetry key was added to the Function App configuration for you.
 
@@ -1212,25 +1212,29 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 1. Open the **TollBooth** project in Visual Studio.
 
-2. Right-click the **TollBooth** solution in Solution Explorer, then select **Add Solution to Source Control**.
+2. Right-click the **TollBooth** solution in Solution Explorer, then select **Create Git Repository...**.
 
-    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Add Solution to Source Control item is selected.](media/vs-add-to-source-control.png 'Solution Explorer')
+    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Create Git Repository item is selected.](media/vs-create-git-repo.png 'Solution Explorer')
 
-3. Select **View** in Visual Studio's top menu, then select **Team Explorer**.
+3. Click **Sign in...** next to Account under `Create a new GitHub repository`, then select GitHub account.
 
-    ![The View menu is expanded with the Team Explorer menu item selected.](media/vs-view-team-explorer.png 'Visual Studio')
+    ![The sign in button is highlighted.](media/vs-create-git-repo-sign-in.png "Create a Git repository")
 
-4. Select **Sync** in the Team Explorer.
+4. In the web page that appears, select **Authorize github** to grant Visual Studio additional permissions to work with your GitHub account.
 
-    ![The Sync link is highlighted.](media/vs-sync.png "Changes")
+    ![The authorize github button is highlighted.](media/vs-create-git-repo-allow.png "Allow additional permissions")
 
-5. Choose the **Publish to GitHub** button, then sign in to your GitHub account when prompted.
+5. Sign in to your GitHub account. After a few moments, you will see a Success page appear, stating that your authorization was successful. When you see this, go back to Visual Studio.
 
-    ![The Publish to GitHub button is highlighted in the Publish to GitHub section.](media/vs-publish-to-github.png "Push")
+    ![The success page is displayed.](media/vs-github-auth-successful.png "Your authorization was successful")
 
-6. Type in a name for the new GitHub repository, then select **Publish**. This will create the new GitHub repository, add it as a remote to your local git repo, then publish your new commit.
+6. Complete the form with the following information, then click **Create and Publish**:
 
-    ![In the Push form, the repository name is highlighted along with the Publish button.](media/vs-publish-to-new-github.png "Push")
+    a. **Repository Name**: Enter `serverless-architecture-lab`, or other unique name.
+
+    b. **Private**: Uncheck this option.
+
+    ![The form is completed as described.](media/vs-create-git-repo-create.png "Create a Git repository")
 
 7. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
 
@@ -1302,25 +1306,23 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 9. Save your changes.
 
-10. Right-click the **TollBooth** project in Solution Explorer, then select **Commit...** under the **Source Control** menu item.
+10. Click the **Git** menu in Visual Studio, then select **Commit or Stash...**.
 
-    ![In Solution Explorer, the TollBooth project is selected. From its right-click context menu, Source Control and Commit... are selected.](media/image101.png 'Solution Explorer')
+    ![The Git menu is displayed.](media/vs-commit-or-stash.png "Commit or Stash")
 
 11. Enter a commit message, then select **Commit All**.
 
-    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](media/image110.png 'Team Explorer - Changes window')
+    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](media/vs-git-commit-all.png 'Team Explorer - Changes window')
 
-12. After committing, select the **Sync** link. This will allow us to add the remote GitHub repository.
+12. After committing, select the **Push** button to push your changes to the GitHub repo.
 
-    ![Under Team Explorer - Changes, in the informational message Commit 02886e85 created locally. Sync to share your changes with the server. The Sync link is selected.](media/image103.png 'Team Explorer - Changes window')
+    ![The Push button is highlighted.](media/vs-git-push.png "Push changes")
 
-13. Select the **Sync** button on the **Synchronization** step.
+    Afterward, you should see a message stating that you successfully pushed your changes to the GitHub repository.
 
-    ![Under Synchronization in the Team Explorer - Synchronization window, the Sync link is selected.](media/image111.png 'Team Explorer - Synchronization window')
+    ![The message is displayed.](media/vs-git-push-success.png "Successfully pushed")
 
-    Afterward, you should see a message stating that the incoming and outgoing commits were successfully synchronized.
-
-14. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
+13. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
 
     ![The latest deployment is displayed in the Deployment Center.](media/functionapp-dc-latest.png 'Deployment Center')
 
