@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Configuration;
 using System.Net;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.DataMovement;
+using Azure.Storage;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace UploadImages
 {
@@ -21,7 +21,7 @@ namespace UploadImages
 
         static int Main(string[] args)
         {
-            if (args.Length == 0)
+           if (args.Length == 0)
             {
                 Console.WriteLine("You must pass the Blob Storage connection string as an argument when executing this application.");
                 Console.ReadLine();
@@ -51,23 +51,14 @@ namespace UploadImages
         {
             Console.WriteLine("Uploading images");
             int uploaded = 0;
-            var account = CloudStorageAccount.Parse(BlobStorageConnection);
-            var blobClient = account.CreateCloudBlobClient();
-            var blobContainer = blobClient.GetContainerReference("images");
+            var blobClient = new BlobServiceClient(BlobStorageConnection);
+
+            var blobContainer = blobClient.GetBlobContainerClient("images");
             blobContainer.CreateIfNotExists();
 
-            // Setup the number of the concurrent operations.
-            TransferManager.Configurations.ParallelOperations = 64;
             // Set ServicePointManager.DefaultConnectionLimit to the number of eight times the number of cores.
             ServicePointManager.DefaultConnectionLimit = Environment.ProcessorCount * 8;
             ServicePointManager.Expect100Continue = false;
-            // Setup the transfer context and track the upload progress.
-            //var context = new SingleTransferContext
-            //{
-            //    ProgressHandler =
-            //        new Progress<TransferStatus>(
-            //            (progress) => { Console.WriteLine("Bytes uploaded: {0}", progress.BytesTransferred); })
-            //};
 
             if (upload1000)
             {
@@ -77,10 +68,9 @@ namespace UploadImages
                     foreach (var image in _sourceImages)
                     {
                         var filename = GenerateRandomFileName();
-                        var destBlob = blobContainer.GetBlockBlobReference(filename);
-
-                        var task = TransferManager.UploadAsync(image, destBlob);
-                        task.Wait();
+                        var uploadClient = blobContainer.GetBlobClient(filename);
+                        var output = uploadClient.UploadAsync(image);
+                        output.Wait();
                         uploaded++;
                         Console.WriteLine($"Uploaded image {uploaded}: {filename}");
                     }
@@ -92,10 +82,10 @@ namespace UploadImages
                 foreach (var image in _sourceImages)
                 {
                     var filename = GenerateRandomFileName();
-                    var destBlob = blobContainer.GetBlockBlobReference(filename);
+                    var uploadClient = blobContainer.GetBlobClient(filename);
 
-                    var task = TransferManager.UploadAsync(image, destBlob);
-                    task.Wait();
+                    var output = uploadClient.UploadAsync(image);
+                    output.Wait();
                     uploaded++;
                     Console.WriteLine($"Uploaded image {uploaded}: {filename}");
                 }
@@ -120,14 +110,14 @@ namespace UploadImages
             if (upload1000)
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\..\..\license plates\copyfrom\")
+                    Directory.GetFiles(@"..\..\..\..\..\license-plates\copyfrom\")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
             else
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\..\..\license plates\")
+                    Directory.GetFiles(@"..\..\..\..\..\license-plates\")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
