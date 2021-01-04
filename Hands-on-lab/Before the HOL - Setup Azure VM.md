@@ -14,7 +14,7 @@ January 2021
 
 This guide provides steps required to setup a Windows Virtual Machine in Azure for the purposes of completing the labs.
 
-> Note: these steps are not required if you intend to use a local development machine. Please return to the [main setup guide](Before-the-HOL---Serverless-architecture.md) in this case.
+> **NOTE:** these steps are not required if you intend to use a local development machine. Please return to the [main setup guide](Before%20the%20HOL%20-%20Serverless%20architecture.md) in this case.
 
 You will need a client that supports RDP connections - this is available as part of Windows and can be downloaded if you are on a [Mac](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) or on [Linux](https://remmina.org/). 
 
@@ -56,7 +56,7 @@ You will need a client that supports RDP connections - this is available as part
 
    ![In the Internet Explorer Enhanced Security Configuration dialog box, under Administrators, the Off button is selected.](images/Setup/image7.png 'Internet Explorer Enhanced Security Configuration dialog box')
 
-> **Note**: Some aspects of this lab require the use of the new Microsoft Edge (Chromium edition) browser. You may find yourself blocked if using Internet Explorer later in the lab.
+> **NOTE**: Some aspects of these labs require the use of the new Microsoft Edge (Chromium edition) browser. You may find yourself blocked if using Internet Explorer later in the lab.
 
 9. Launch Internet Explorer and download [Microsoft Edge](https://www.microsoft.com/edge).
 
@@ -71,4 +71,4 @@ You will need a client that supports RDP connections - this is available as part
    - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
    - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
 
-You can now return the main setup guide and [validate your Azure connectivitiy](Before-the-HOL---Serverless-architecture.md#task-5-validate-connectivity-to-azure).
+You can now return the [main setup guide](Before%20the%20HOL%20-%20Serverless%20architecture.md).

@@ -35,7 +35,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 **Please complete these steps at least one day prior to the lab!**
 
-- Microsoft Azure subscription (non-Microsoft subscription)
+- Microsoft Azure subscription (non-Microsoft subscription). You can create a free account at https://azure.com/free.
 - Local machine or an Azure virtual machine configured with:
   - Git (https://git-scm.com/) - accept all defaults when installing
   - Visual Studio Code (https://code.visualstudio.com/download). Install these extensions ([instructions for extensions](https://code.visualstudio.com/docs/editor/extension-gallery)):
@@ -44,7 +44,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
   - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
   - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
   - Modern web browser such as Microsoft Edge (https://www.microsoft.com/edge) - make sure to set it as your default (edge://settings/defaultBrowser)
-- GitHub account. You can create a free account at <https://github.com>.
+- GitHub account. You can create a free account at https://github.com/join.
 
 ## Before the hands-on lab
 
@@ -67,6 +67,10 @@ In this exercise, you will set up your environment you will use for the rest of 
 
    ![In the Create a resource group blade, the Resource group field displays ServerlessArchitecture.](images/Setup/image10a.png 'Resource group blade')
 
+### Optional: setup an Azure VM for Labs.
+
+If you wish to use an Azure Virtual Machine (VM) for the labs then please use [VM setup instructions](Before%20the%20HOL%20-%20Setup%20Azure%20VM.md) before proceeding with further setps here.
+
 ### Task 2: Validate connectivity to Azure
 
 1. Launch Visual Studio Code and select the Azure Extension.
@@ -83,17 +87,17 @@ In this exercise, you will set up your environment you will use for the rest of 
 
 > Make sure to use a web browser that is logged into your GitHub account to perform these actions.
 
-1. Navigate to https://github.com/Microsoft/MCW-Serverless-architecture and at the top right select 'Fork'. Once created you will be automatically taken to your copy of the repository.
+1. Navigate to https://github.com/sjwaight/MCW-Serverless-architecture and at the top right select 'Fork'. Once created you will be automatically taken to your copy of the repository.
 
-   ![In Visual Studio Code, Azure Functions Navigation Pane.](images/Setup/image16.png 'Select the Fork button to create a copy')
+   ![On GitHub, selecting Fork option for repository.](images/Setup/image16.png 'Select the Fork button to create a copy')
 
 3. In Visual Studio Code select the Git Extension and then select **Clone Repository**. In the Command Palette select **Clone from GitHub**. You will be prompted to sign into your GitHub account.
 
-   ![In Visual Studio Code, Azure Functions Navigation Pane.](images/Setup/image17.png 'Select the Fork button to create a copy')
+   ![In Visual Studio Code, selecting Clone Repository button.](images/Setup/image17.png 'Selecting Clone Repository button')
 
-   ![In Visual Studio Code, Azure Functions Navigation Pane.](images/Setup/image18.png 'Select the Fork button to create a copy')
+   ![In Visual Studio Code, selecting Clone from GitHub.](images/Setup/image18.png 'Select Clone from GitHub')
 
-2. Once signed in select the repository you just forked and clone it to your local machine. Select an appropriate local folder to which to clone to.
+2. Once signed in to GitHub, return to Visual Studio Code and select the repository you just forked and clone it to your local machine. Select an appropriate local folder to which to clone to.
 
 5. Navigate to `Hands-on lab\starter` folder in the repository you just cloned.
 
