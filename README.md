@@ -7,7 +7,7 @@ Contoso is rapidly expanding their toll booth management business to operate in 
 
 They want to automate this process in a way that is cost effective and scalable. They believe serverless is the best route for them, but do not have the expertise to build the solution.
 
-June 2020
+January 2021
 
 ## Target Audience
 
@@ -40,8 +40,8 @@ At the end of the hands-on-lab, you will have confidence in designing, developin
 - Azure Event Grid
 - Application Insights
 - Azure Cosmos DB
-- Logic Apps
-- Visual Studio 2019
+- Azure Logic Apps
+- Visual Studio Code
 
 ## Azure solution
 
