@@ -661,9 +661,15 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
 4. Open the `main.yml` file from the '.guthub\workflows' folder using Visual Studio Code and change the placeholder **YOURFUNCTIONAPPNAME** with the actual name of your Azure Function.
 
-5. In Visual Studio Code, click on the Git Extension in the left navigation and you should see a series of Changes listed. Enter an appropriate Message and hit Enter to commit them.
+5. In Visual Studio Code, click on the Git Extension in the left navigation and you should see a series of Changes listed. Enter an appropriate Message and hit Ctrl+Enter to commit them (on Mac Command+Enter).
 
-9. Open the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just published.
+6. From the Source Control ellipses menu select **Push** to send your changes to GitHub. This may take a few moments to complete.
+
+    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/git-push.png 'Solution Explorer ')
+
+7. In Microsoft Edge, open the **Actions** section of your repository, and if required, enable the Action. If you wish to run the Action you can select
+
+9.Open the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just published.
 
 10. Select **Functions** in the left-hand menu. You should see both functions you just published from the Visual Studio solution listed.
 
