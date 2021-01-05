@@ -1,0 +1,50 @@
+{
+    "name": "blobStorageConnection",
+    "value": "@Microsoft.KeyVault(SecretUri=https://{YOURKEYVAULT}.vault.azure.net/secrets/blobStorageConnection/{YOURSECRETID})",
+    "slotSetting": false
+},
+{
+    "name": "computerVisionApiKey",
+    "value": "@Microsoft.KeyVault(SecretUri=https://{YOURKEYVAULT}.vault.azure.net/secrets/computerVisionApiKey/{YOURSECRETID})",
+    "slotSetting": false
+},
+{
+    "name": "computerVisionApiUrl",
+    "value": "https://{YOURCOMPUTERVISION}.cognitiveservices.azure.com/vision/v2.0/ocr",
+    "slotSetting": false
+},
+{
+    "name": "cosmosDBAuthorizationKey",
+    "value": "@Microsoft.KeyVault(SecretUri=https://{YOURKEYVAULT}.vault.azure.net/secrets/cosmosDBAuthorizationKey/{YOURSECRETID})",
+    "slotSetting": false
+},
+{
+    "name": "cosmosDBCollectionId",
+    "value": "Processed",
+    "slotSetting": false
+},
+{
+    "name": "cosmosDBDatabaseId",
+    "value": "LicensePlates",
+    "slotSetting": false
+},
+{
+    "name": "cosmosDBEndPointUrl",
+    "value": "https://{YOURCOSMOSDB}.documents.azure.com:443/",
+    "slotSetting": false
+},
+{
+    "name": "eventGridTopicEndpoint",
+    "value": "https://{YOUREVENTGRID}.{YOURREGION}.eventgrid.azure.net/api/events",
+    "slotSetting": false
+},
+{
+    "name": "eventGridTopicKey",
+    "value": "@Microsoft.KeyVault(SecretUri=https://{YOURKEYVAULT}.vault.azure.net/secrets/eventGridTopicKey/{YOURSECRETID})",
+    "slotSetting": false
+},
+{
+    "name": "exportCsvContainerName",
+    "value": "export",
+    "slotSetting": false
+}

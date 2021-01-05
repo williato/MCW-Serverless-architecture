@@ -32,7 +32,15 @@ You will need a client that supports RDP connections - this is available as part
 
 3. Once the Cloud Shell prompt is loaded you can use the following command to create a new Windows server instance. Make sure to replace 'myVM' with a unique hostname. When prompted set a strong password.
 
-   `az vm create --resource-group ServerlessArchitecture --name myVM --image win2016datacenter --admin-username azureuser --nsg-rule RDP --size Standard_DS2_v2`
+   ```bash
+   az vm create \
+    --resource-group ServerlessArchitecture \
+    --name myVM \
+    --image win2016datacenter \
+    --admin-username azureuser \
+    --nsg-rule RDP \
+    --size Standard_DS2_v2
+   ```
 
    > If the request fails please check that the name ('myVM') you specified is unique and the VM size you selected is available in the region you are using. 
 
@@ -70,5 +78,12 @@ You will need a client that supports RDP connections - this is available as part
       - C#
    - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
    - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
+
+Once Git is installed you will need to configure two defaults before first use. Open a command prompt and run these two commands, substituting values as required:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+```
 
 You can now return the [main setup guide](Before%20the%20HOL%20-%20Serverless%20architecture.md).

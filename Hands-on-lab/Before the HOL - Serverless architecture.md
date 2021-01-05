@@ -37,7 +37,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 - Microsoft Azure subscription (non-Microsoft subscription). You can create a free account at https://azure.com/free.
 - Local machine or an Azure virtual machine configured with:
-  - Git (https://git-scm.com/) - accept all defaults when installing
+  - Git (https://git-scm.com/) - accept all defaults when installing.
   - Visual Studio Code (https://code.visualstudio.com/download). Install these extensions ([instructions for extensions](https://code.visualstudio.com/docs/editor/extension-gallery)):
     - Azure Functions
     - C#
@@ -45,6 +45,13 @@ The names of manufacturers, products, or URLs are provided for informational pur
   - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
   - Modern web browser such as Microsoft Edge (https://www.microsoft.com/edge) - make sure to set it as your default (edge://settings/defaultBrowser)
 - GitHub account. You can create a free account at https://github.com/join.
+
+Once Git is installed you will need to configure two defaults before first use. Open a command prompt and run these two commands, substituting values as required:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+```
 
 ## Before the hands-on lab
 
