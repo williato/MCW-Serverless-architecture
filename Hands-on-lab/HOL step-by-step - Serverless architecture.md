@@ -651,13 +651,13 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
 1. Navigate to your Function App in the Azure Portal and from the top navigation select **Get publish profile**. A text file will download to your computer.
 
-    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/function-app-profile.png 'Solution Explorer ')
+    ![On Azure Portal, with a Function App open, with Download publish profile highlighted.](media/function-app-profile.png 'Download Function App Publish Profile')
 
 2. Open the downloaded file in Visual Studio Code, select all the text and copy it.
 
 3. Using Microsoft Edge, open GitHub and navigate to the **Secrets** section of **Settings** for the repository you cloned and create a new Secret called **AZURE_FUNCTIONAPP_PUBLISH_PROFILE**, pasting in the entire contents of the file from step 2.
 
-    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/actions-github-secret.png 'Solution Explorer ')
+    ![On GitHub, showing how to set Repository Secrets using Settings.](media/actions-github-secret.png 'Setting a GitHub repository secret')
 
 4. Open the `main.yml` file from the '.guthub\workflows' folder using Visual Studio Code and change the placeholder **YOURFUNCTIONAPPNAME** with the actual name of your Azure Function.
 
@@ -665,11 +665,13 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
 6. From the Source Control ellipses menu select **Push** to send your changes to GitHub. This may take a few moments to complete.
 
-    ![In Solution Explorer, the TollBooth is selected, and within its context menu, the Publish item is selected.](media/git-push.png 'Solution Explorer ')
+    ![In Visual Studio Code's Git Extension with the 'Push' option highlighted.](media/git-push.png 'Visual Studio Code Git Extension - Push')
 
-7. In Microsoft Edge, open the **Actions** section of your repository, and if required, enable the Action. If you wish to run the Action you can select
+7. In Microsoft Edge, open the **Actions** section of your repository, and if required, enable the Action. If you wish to run the Action you can select it and choose **Run workflow**.
 
-9.Open the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just published.
+    ![On GitHub, in Actions with the 'run worklow' option highlighted.](media/run-action-manual.png 'Run GitHub Action manually')
+
+9. Open the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just published.
 
 10. Select **Functions** in the left-hand menu. You should see both functions you just published from the Visual Studio solution listed.
 
