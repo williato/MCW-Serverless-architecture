@@ -1039,7 +1039,7 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
     ![In the Query window, the previously defined SQL query displays. Under Results, the number 669 is highlighted.](media/cosmos-query-results.png 'Query 1 tab')
 
-## Exercise 6: Create the data export workflow
+## Exercise 6: Create the data export Logic App
 
 **Duration**: 30 minutes
 
@@ -1143,7 +1143,7 @@ In this exercise, you create a new Azure Logic App for your data export workflow
 
 ## Exercise 7: Complete ExportLicensePlates Function App
 
-**Duration**: 40 minutes
+**Duration**: 10 minutes
 
 In this exercise, finsish adding code to your Function App and push code to GitHub so it is deployed automatically to Azure.
 
@@ -1191,15 +1191,15 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
 7. In Microsoft Edge, open the **Actions** section of your repository on GitHub and you will see the Action running.
 
-## Exercise 8: Rerun the workflow and verify data export
+## Exercise 8: Rerun the Logic App and verify data export
 
 **Duration**: 10 minutes
 
-With the latest code changes in place, run your Logic App and verify that the files are successfully exported.
+With the latest Function App code changes in place, re-run your Logic App and verify that the files are successfully exported.
 
 ### Task 1: Run the Logic App
 
-1. Open your ServerlessArchitecture resource group in the Azure portal, then select your Logic App.
+1. Open your **ServerlessArchitecture** resource group in the Azure portal, then select your Logic App.
 
 2. From the **Overview** blade, select **Enable**.
 
@@ -1215,7 +1215,7 @@ With the latest code changes in place, run your Logic App and verify that the fi
 
 ### Task 2: View the exported CSV file
 
-1. Open your ServerlessArchitecture resource group in the Azure portal, then select your **Storage account** you had provisioned to store uploaded photos and exported CSV files.
+1. Open your **ServerlessArchitecture** resource group in the Azure portal, then select your **Storage account** you had provisioned to store uploaded photos and exported CSV files.
 
 2. In the Overview pane of your storage account, select **Containers**.
 
@@ -1251,16 +1251,8 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 2. Confirm the deletion by re-typing the **resource group name** and selecting **Delete**.
 
-3. If you created a different resource group for your virtual machined, be sure to delete that as well.
+3. If you created a different resource group for your virtual machine, be sure to delete that as well.
 
 4. Optionally, delete the GitHub repository you created for this lab by selecting **settings** and then **Delete this repository** from the GitHub website.
 
-### Task 2: Delete the GitHub repo
-
-1. Open <https://www.github.com>, then select your profile icon and select **Your repositories**.
-
-2. Navigate to your repo and select it.
-
-3. Select the **Settings** tab, scroll to the bottom, select **Delete this repository**.
-
-You should follow all steps provided _after_ attending the Hands-on lab.
+You should follow these steps provided _after_ attending the Hands-on lab.
