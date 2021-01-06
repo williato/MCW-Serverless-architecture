@@ -11,10 +11,10 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/bin/Debug/net5.0/UploadImages.dll",
-            "args": [],
+            "args": ["DefaultEndpointsProtocol=https;AccountName=swdemostorage21;AccountKey=aKl4qtjoX3y24LsGbqXMM27ZoIK6ATTZH9j2J+m8zDOQE7FZVoZPHKuHhLMelhE4qBYCIs66RN/cRVpDw9O1zA==;EndpointSuffix=core.windows.net"],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {

@@ -671,7 +671,7 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
     ![On GitHub, in Actions with the 'run worklow' option highlighted.](media/run-action-manual.png 'Run GitHub Action manually')
 
-9. Open the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just published.
+9. Once the Action completes, open the Azure Portal and navigate to the **ServerlessArchitecture** resource group, then select the Azure Function App to which you just deployed.
 
 10. Select **Functions** in the left-hand menu. You should see both functions you just published from the Visual Studio solution listed.
 
@@ -683,9 +683,9 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
 12. On the **Create Event Subscription** blade, specify the following configuration options:
 
-    a. **Name**: Unique value for the App name similar to **processimagesub** (ensure the green check mark appears).
+    a. **Name**: Unique value for the subscription name similar to **processimagesub** (ensure the green check mark appears).
 
-    b. **Event Schema**: Select Event Grid Schema.
+    b. **Event Schema**: Select **Event Grid Schema**.
 
     c. For **Topic Type**, select **Storage Accounts (Blob & GPv2)**.
 
@@ -709,17 +709,17 @@ Create two new Azure Functions written in Node.js, using the Azure portal. These
 
 ### Help references
 
-|                                                                   |                                                                                                         |
-| ----------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------------: |
-| **Description**                                                   |                                                **Links**                                                |
-| Create your first function in the Azure portal                    |        <https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function>         |
-| Store unstructured data using Azure Functions and Azure Cosmos DB | <https://docs.microsoft.com/azure/azure-functions/functions-integrate-store-unstructured-data-cosmosdb> |
+|                                                                   |                                                                                                       |
+| ----------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------: |
+| **Description**                                                   |                                                **Links**                                              |
+| Create your first function in the Azure portal                    |        https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function         |
+| Store unstructured data using Azure Functions and Azure Cosmos DB | https://docs.microsoft.com/azure/azure-functions/functions-integrate-store-unstructured-data-cosmosdb |
 
-### Task 1: Create function to save license plate data to Azure Cosmos DB
+### Task 1: Create Function to save license plate data to Azure Cosmos DB
 
 In this task, you will create a new Node.js function triggered by Event Grid and that outputs successfully processed license plate data to Azure Cosmos DB.
 
-1. Using a new tab or instance of your browser navigate to the Azure portal, <http://portal.azure.com>.
+1. Navigate to the Azure portal https://portal.azure.com/.
 
 2. Open the **ServerlessArchitecture** resource group, then select the Azure Function App you created whose name ends with **Events**. If you did not use this naming convention, make sure you select the Function App that you _did not_ deploy to in the previous exercise.
 
@@ -727,15 +727,11 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
     ![In the Function Apps blade, the TollBoothEvents2 application is selected. In the Overview tab, the + New function button is selected.](media/functions-new.png 'TollBoothEvents2 blade')
 
-4. Enter **event grid** into the template search form, then select the **Azure Event Grid trigger** template.
+4. Select **Develop in portal** and then enter **event grid** into the template filter form, then select the **Azure Event Grid trigger** template. In the **New Function** field enter `SavePlateData`, then select **Add**.
 
-    ![In the Template search form, event grid is typed in the search field. Below, the Event Grid trigger tile is highlighted.](media/new-function-event-grid-trigger-template.png "Template search form")
+    ![In the Template search form, event grid is typed in the search field. Below, the Event Grid trigger tile is highlighted.](media/new-function-event-grid-trigger-template.png "Add function dialog")
 
-5. In the _New Function_ form, enter `SavePlateData` for the **Name**, then select **Create Function**.
-
-    ![In the New Function form, SavePlateData is entered in the Name field and the Create button is highlighted.](media/new-function-saveplatedata.png "New Function form")
-
-6. Select **Code + Test**, then replace the code in the new SavePlateData function with the following:
+5. Select **Code + Test**, then replace the code in the new `SavePlateData` function with the following:
 
     ```javascript
     module.exports = function(context, eventGridEvent) {
@@ -755,9 +751,9 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
     ![The function code is displayed.](media/saveplatedata-code.png "SavePlateData Code + Test")
 
-7. Select **Save**.
+6. Select **Save**.
 
-8. If you see the following error about Application Insights not being configured, ignore for now. We will add Application Insights in a later exercise.
+7. If you see the following error about Application Insights not being configured, ignore for now. We will add Application Insights in a later exercise.
 
     ![Error about App Insights not being installed.](media/app-insights-error-message.png "App Insights error")
 
@@ -765,13 +761,13 @@ In this task, you will create a new Node.js function triggered by Event Grid and
 
 In this task, you will add an Event Grid subscription to the SavePlateData function. This will ensure that the events sent to the Event Grid topic containing the savePlateData event type are routed to this function.
 
-1. With the SavePlateData function open, select **Integration** in the left-hand menu, select **Event Grid Trigger (eventGridEvent)**, then select **Create Event Grid subscription**.
+1. With the `SavePlateData` Function open, select **Integration** in the left-hand menu, select **Event Grid Trigger (eventGridEvent)**, then select **Create Event Grid subscription**.
 
     ![In the SavePlateData blade code window, the Add Event Grid subscription link is selected.](media/saveplatedata-add-eg-sub.png 'SavePlateData blade')
 
 2. On the **Create Event Subscription** blade, specify the following configuration options:
 
-    a. **Name**: Unique value for the App name similar to **saveplatedatasub** (ensure the green check mark appears).
+    a. **Name**: Unique value for the subscription name similar to **saveplatedatasub** (ensure the green check mark appears).
 
     b. **Event Schema**: Select **Event Grid Schema**.
 
@@ -779,11 +775,11 @@ In this task, you will add an Event Grid subscription to the SavePlateData funct
 
     d. Select your **Subscription** and **ServerlessArchitecture** resource group.
 
-    e. For resource, select your recently created Event Grid.
+    e. For resource, select the Event Grid Topic you created in Exercise 1, Task 3.
 
     f. For Event Types, select **Add Event Type**.
 
-    g. Enter `savePlateData` for the new event type value. This will ensure this function is only triggered by this Event Grid type.
+    g. Enter `savePlateData` for the new event type value. This will ensure this Function is only triggered by this Event Grid event type.
 
     h. Leave Azure Function as the Endpoint Type.
 
@@ -811,9 +807,9 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
 4. Specify the following configuration options in the Azure Cosmos DB output form:
 
-    a. For database name, type **LicensePlates**.
+    a. For **Database name**, type **LicensePlates**.
 
-    b. For the collection name, type **Processed**.
+    b. For the **Collection Name**, type **Processed**.
 
     ![Under Azure Cosmos DB output the following field values display: Document parameter name, outputDocument; Collection name, Processed; Database name, LicensePlates; Azure Cosmos DB account connection, tollbooths_DOCUMENTDB.](media/saveplatedata-cosmos-integration.png 'Azure Cosmos DB output section')
 
@@ -821,27 +817,19 @@ In this task, you will add an Azure Cosmos DB output binding to the SavePlateDat
 
     > **Note**: you should wait for the template dependency to install if you were prompted earlier.
 
-### Task 4: Create function to save manual verification info to Azure Cosmos DB
+### Task 4: Create Function to save manual verification info to Azure Cosmos DB
 
-In this task, you will create a new function triggered by Event Grid and outputs information about photos that need to be manually verified to Azure Cosmos DB.
+In this task, you will create a new Function triggered by Event Grid which outputs information to Azure Cosmos DB about photos that need to be manually verified.
 
 1. Close the `SavePlateData` function. Select the **+ Add** button within the **Functions** blade of the Function App.
 
     ![In the left-hand menu next to the Functions item, the + button is highlighted along with its tooltip Create new displaying.](media/new-function-button.png "Create new function")
 
-2. Enter **event grid** into the template search form, then select the **Azure Event Grid trigger** template.
+2. elect **Develop in portal** and then enter **event grid** into the template filter form, then select the **Azure Event Grid trigger** template. In the **New Function** field enter `QueuePlateForManualCheckup`, then select **Add**.
 
-    ![Event grid is entered into the search field, and in the results, Azure Event Grid trigger tile displays.](media/new-function-event-grid-trigger-template.png 'Event grid trigger')
+    ![Event grid is entered into the search field, and in the results, Azure Event Grid trigger tile displays.](media/queueplate-function-create.png 'Event grid trigger')
 
-3. In the **New Function** form, fill out the following properties:
-
-    a. For name, type **QueuePlateForManualCheckup**
-
-    ![In the Azure Event Grid trigger form, QueuePlateForManualCheckup is typed in the Name field along with a Create and Cancel button.](media/image51.png 'Event Grid trigger, New Function form')
-
-4. Select **Create Function**.
-
-5. Select **Code + Test**, then replace the code in the new QueuePlateForManualCheckup function with the following:
+3. Select **Code + Test**, then replace the code in the new `QueuePlateForManualCheckup` Function with the following:
 
     ```javascript
     module.exports = async function(context, eventGridEvent) {
@@ -859,23 +847,23 @@ In this task, you will create a new function triggered by Event Grid and outputs
     };
     ```
 
-6. Select **Save**.
+4. Select **Save**.
 
 7. If you see the following error about Application Insights not being configured, ignore for now. We will add Application Insights in a later exercise.
 
     ![Error about App Insights not being installed.](media/app-insights-error-message.png "App Insights error")
 
-### Task 5: Add an Event Grid subscription to the QueuePlateForManualCheckup function
+### Task 5: Add an Event Grid subscription to the QueuePlateForManualCheckup Function
 
 In this task, you will add an Event Grid subscription to the QueuePlateForManualCheckup function. This will ensure that the events sent to the Event Grid topic containing the queuePlateForManualCheckup event type are routed to this function.
 
-1. With the QueuePlateForManualCheckup function open, select **Integration** in the left-hand menu, select **Event Grid Trigger (eventGridEvent)**, then select **Create Event Grid subscription**.
+1. With the `QueuePlateForManualCheckup` Function open, select **Integration** in the left-hand menu, select **Event Grid Trigger (eventGridEvent)**, then select **Create Event Grid subscription**.
 
     ![In the QueuePlateForManualCheckup Integration blade, the Create Event Grid subscription link is selected.](media/queueplateformanualcheckup-add-eg-sub.png "QueuePlateForManualCheckup blade")
 
 2. On the **Create Event Subscription** blade, specify the following configuration options:
 
-    a. **Name**: Unique value for the App name similar to **queueplateformanualcheckupsub** (ensure the green check mark appears).
+    a. **Name**: Unique value for the subscription name similar to **queueplateformanualcheckupsub** (ensure the green check mark appears).
 
     b. **Event Schema**: Select **Event Grid Schema**.
 
@@ -883,7 +871,7 @@ In this task, you will add an Event Grid subscription to the QueuePlateForManual
 
     d. Select your **Subscription** and **ServerlessArchitecture** resource group.
 
-    e. For resource, select your recently created Event Grid.
+    e. For resource, select the Event Grid Topic you created in Exercise 1, Task 3.
 
     f. For Event Types, select **Add Event Type**.
 
@@ -895,7 +883,7 @@ In this task, you will add an Event Grid subscription to the QueuePlateForManual
 
     ![In the Create Event Subscription blade, fields are set to the previously defined values.](media/manualcheckup-eg-sub.png)
 
-### Task 6: Add an Azure Cosmos DB output to the QueuePlateForManualCheckup function
+### Task 6: Add an Azure Cosmos DB output to the QueuePlateForManualCheckup Function
 
 In this task, you will add an Azure Cosmos DB output binding to the QueuePlateForManualCheckup function, enabling it to save its data to the NeedsManualReview collection.
 
@@ -905,29 +893,31 @@ In this task, you will add an Azure Cosmos DB output binding to the QueuePlateFo
 
 2. Specify the following configuration options in the Azure Cosmos DB output form:
 
-    a. For database name, enter **LicensePlates**.
+    a. For **Database name**, enter **LicensePlates**.
 
-    b. For collection name, enter **NeedsManualReview**.
+    b. For **Collection Name**, enter **NeedsManualReview**.
 
-    c. Select the **Azure Cosmos DB account connection** you created earlier.
+    c. Select the **Cosmos DB account connection** you created earlier.
 
     ![In the Azure Cosmos DB output form, the following field values display: Document parameter name, outputDocument; Collection name, NeedsManualReview; Database name, LicensePlates; Azure Cosmos DB account connection, tollbooths_DOCUMENTDB.](media/manualcheckup-cosmos-integration.png 'Azure Cosmos DB output form')
 
 3. Select **OK**.
 
-## Exercise 4: Monitor your functions with Application Insights
+## Exercise 4: Monitor your Functions with Application Insights
 
 **Duration**: 15 minutes
 
 Application Insights can be integrated with Azure Function Apps to provide robust monitoring for your functions. In this exercise, you will view telemetry in the Application Insights account that you created when provisioning the Function Apps. Since you assigned the Application Insights account to the Function Apps when creating them, the Application Insights telemetry key was added to the Function App configuration for you.
 
+> **Note:**  Make sure you have the Blob Storage Connection string to the Account you created in Exercise 1, Task 1 available.
+
 ### Help references
 
-|                                                               |                                                                                  |
-| ------------------------------------------------------------- | :------------------------------------------------------------------------------: |
-| **Description**                                               |                                    **Links**                                     |
-| Monitor Azure Functions using Application Insights            |     <https://docs.microsoft.com/azure/azure-functions/functions-monitoring>      |
-| Live Metrics Stream: Monitor & Diagnose with 1-second latency | <https://docs.microsoft.com/azure/application-insights/app-insights-live-stream> |
+|                                                               |                                                                                |
+| ------------------------------------------------------------- | :----------------------------------------------------------------------------: |
+| **Description**                                               |                                    **Links**                                   |
+| Monitor Azure Functions using Application Insights            |     https://docs.microsoft.com/azure/azure-functions/functions-monitoring      |
+| Live Metrics Stream: Monitor & Diagnose with 1-second latency | https://docs.microsoft.com/azure/application-insights/app-insights-live-stream |
 
 ### Task 1: Use the Live Metrics Stream to monitor functions in real time
 
@@ -939,43 +929,41 @@ Application Insights can be integrated with Azure Function Apps to provide robus
 
     ![In the TollBoothMonitor blade, in the pane under Investigate, Live Metrics Stream is selected. ](media/live-metrics-link.png 'TollBoothMonitor blade')
 
-3. Leave the Live Metrics Stream open and go back to the starter app solution in Visual Studio.
+3. In Visual Studio Code close any open project and open the `UploadImages` folder.
 
-4. Navigate to the **UploadImages** project using the Solution Explorer of Visual Studio. Right-click on **UploadImages**, then select **Properties**.
+4. Open a new Terminal in Visual Studio Code by selecting **Terminal** in the menu and **New Terminal**.
 
-    ![In Solution Explorer, the UploadImages project is expanded, and Properties is selected from the right-click context menu.](media/vs-uploadimages.png 'Solution Explorer')
+    ![In Visual Studio Code, with New Terminal selected. ](media/vscode-uploadimages.png 'New Terminal')
 
-5. Select **Debug** in the left-hand menu, then paste the connection string for your Blob storage account into the **Command line arguments** text field. This will ensure that the required connection string is added as an argument each time you run the application. Additionally, the combination of adding the value here and the `.gitignore` file included in the project directory will prevent the sensitive connection string from being added to your source code repository in a later step.
+5. In the new Terminal run the following commands. When you paste your Blob Storage connection string make sure to enclose in double quotes.
 
-    ![The Debug menu item and the command line arguments text field are highlighted.](media/vs-command-line-arguments.png "Properties - Debug")
+```
+dotnet build
 
-6. Save your changes.
+dotnet run "DefaultEndpointsProtocol=https;AccountName={YOURACCOUNT};AccountKey={YOURACCOUNTKEY};EndpointSuffix=core.windows.net"
+```
 
-7. Right-click the **UploadImages** project in the Solution Explorer, then select **Debug** then **Start new instance** from the context menu.
+>**Note:** On Windows, if the files are located under a longer root path, such as `C:\Users\workshop\Downloads\`, then you will encounter build issues in later steps: `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.`
 
-    ![In Solution Explorer, the UploadImages project is selected. From the context menu, Debug then Start new instance is selected.](media/vs-debug-uploadimages.png 'Solution Explorer')
+8. When prompted, enter **1** and press **ENTER**. This uploads a handful of car photos to the images container of your Blob storage account.
 
-    >**Note:** Ensure the files are located under `C:\ServerlessMCW\`. If the files are located under a longer root path, such as `C:\Users\workshop\Downloads\`, then you will encounter build issues in later steps: `The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.`
+    ![The Terminal, showing images being uploaded.](media/image69.png 'Visual Studio Code Terminal output')
 
-8. When the console window appears, enter **1** and press **ENTER**. This uploads a handful of car photos to the images container of your Blob storage account.
-
-    ![A Command prompt window displays, showing images being uploaded.](media/image69.png 'Command prompt window')
-
-9. Switch back to your browser window with the Live Metrics Stream still open within Application Insights. You should start seeing new telemetry arrive, showing the number of servers online, the incoming request rate, CPU process amount, etc. You can select some of the sample telemetry in the list to the side to view output data.
+9. Switch back to your browser with the Live Metrics Stream still open in Application Insights. You should start seeing new Telemetry arrive, with the number of servers online at the bottom, the incoming request rate, CPU process amount, etc. You can select some of the sample Telemetry in the list to the side to view output data.
 
     ![The Live Metrics Stream window displays information for the two online servers. Displaying line and point graphs including incoming requests, outgoing requests, and overall health. To the side is a list of Sample Telemetry information. ](media/image70.png 'Live Metrics Stream window')
 
-10. Leave the Live Metrics Stream window open once again, and close the console window for the image upload. Debug the UploadImages project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
+10. Leave the Live Metrics Stream window open, and return to Visual Studio Code. Re-run the `dotnet run` command and this time enter **2** and press **ENTER**. This will upload 1,000 new photos.
 
-    ![The Command prompt window displays with image uploading information.](media/image71.png 'Command prompt window')
+    ![The Terminal, showing images being uploaded.](media/image71.png 'Visual Studio Code Terminal output')
 
-11. Switch back to the Live Metrics Stream window and observe the activity as the photos are uploaded. You can see the number of servers online, which translate to the number of Function App instances that are running between both Function Apps. You should also notice things such as a steady cadence for the Request Rate monitor, the Request Duration hovering below \~200ms second, and the Incoming Requests roughly matching the Outgoing Requests.
+11. Switch back to the Live Metrics Stream in your browser and observe the activity as the photos are uploaded. You can see the number of servers online, which translate to the number of Function App instances that are running between both Function Apps. You should also notice things such as a steady cadence for the Request Rate monitor, the Request Duration hovering below \~200ms second, and the Incoming Requests roughly matching the Outgoing Requests.
 
     ![In the Live Metrics Stream window, two servers are online. Under Incoming Requests. the Request Rate heartbeat line graph is selected, as is the Request Duration dot graph. Under Overall Health, the Process CPU heartbeat line graph is also selected, the similarities between this graph and the Request Rate graph under Incoming Requests are highlighted for comparison.](media/image72.png 'Live Metrics Stream window')
 
-12. After this has run for a while, close the image upload console window once again, but leave the Live Metrics Stream window open.
+12. After the upload has run for a while, you can cancel it, but leave the Live Metrics Stream window open.
 
-### Task 2: Observe your functions dynamically scaling when resource-constrained
+### Task 2: Observe your Functions dynamically scaling when resource-constrained
 
 In this task, you will change the Computer Vision API to the Free tier. This will limit the number of requests to the OCR service to 10 per minute. Once changed, run the UploadImages console app to upload 1,000 images again. The resiliency policy programmed into the FindLicensePlateText.MakeOCRRequest method of the ProcessImage function will begin exponentially backing off requests to the Computer Vision API, allowing it to recover and lift the rate limit. This intentional delay will greatly increase the function's response time, thus causing the Consumption plan's dynamic scaling to kick in, allocating several more servers. You will watch all of this happen in real time using the Live Metrics Stream view.
 
@@ -987,9 +975,9 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 
     ![In the Cognitive Services blade, under Resource Management, the Pricing tier item is selected. In the Choose your pricing tier blade, the F0 Free option is selected.](media/image73.png 'Choose your pricing tier blade')
 
-3. Switch to Visual Studio, debug the **UploadImages** project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
+3. Switch to Visual Studio Code, run the **UploadImages** project again, then enter **2** and press **ENTER**. This will upload 1,000 new photos.
 
-    ![The Command prompt window displays image uploading information.](media/image71.png 'Command Prompt window')
+    ![The Terminal, showing images being uploaded.](media/image71.png 'Visual Studio Code Terminal output')
 
 4. Switch back to the Live Metrics Stream window and observe the activity as the photos are uploaded. After running for a couple of minutes, you should start to notice a few things. The Request Duration will start to increase over time. As this happens, you should notice more servers being brought online. Each time a server is brought online, you should see a message in the Sample Telemetry stating that it is "Generating 2 job function(s)", followed by a Starting Host message. You should also see messages logged by the resilience policy that the Computer Vision API server is throttling the requests. This is known by the response codes sent back from the service (429). A sample message is "Computer Vision API server is throttling our requests. Automatically delaying for 16000ms".
 
@@ -997,9 +985,9 @@ In this task, you will change the Computer Vision API to the Free tier. This wil
 
     ![In the Live Metrics Stream window, 11 servers are now online.](media/image74.png 'Live Metrics Stream window')
 
-5. After this has run for some time, close the UploadImages console to stop uploading photos.
+5. After the upload has run for a while, you can cancel it.
 
-6. Navigate back to the **Computer Vision** API and set the pricing tier back to **S1 Standard**.
+6. In the Azure Portal, navigate back to the **Computer Vision** API and set the pricing tier back to **S1 Standard**.
 
 ## Exercise 5: Explore your data in Azure Cosmos DB
 
@@ -1009,10 +997,10 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
 ### Help references
 
-|                       |                                                           |
-| --------------------- | :-------------------------------------------------------: |
-| **Description**       |                         **Links**                         |
-| About Azure Cosmos DB | <https://docs.microsoft.com/azure/cosmos-db/introduction> |
+|                       |                                                         |
+| --------------------- | :------------------------------------------------------ |
+| **Description**       |                         **Links**                       |
+| About Azure Cosmos DB | https://docs.microsoft.com/azure/cosmos-db/introduction |
 
 
 > **Note:** Ensure that your IP address is added to the IP list under the Firewall settings in your Azure Cosmos DB account. If not, then you will not able to see the License Plates data within Azure Cosmos DB.
@@ -1055,35 +1043,31 @@ In this exercise, you will use the Azure Cosmos DB Data Explorer in the portal t
 
 **Duration**: 30 minutes
 
-In this exercise, you create a new Logic App for your data export workflow. This Logic App will execute periodically and call your ExportLicensePlates function, then conditionally send an email if there were no records to export.
+In this exercise, you create a new Azure Logic App for your data export workflow. This Logic App will execute periodically and call your ExportLicensePlates function, then conditionally send an email if there were no records to export.
 
 ### Help references
 
-|                                      |                                                                                                                 |
-| ------------------------------------ | :-------------------------------------------------------------------------------------------------------------: |
-| **Description**                      |                                                    **Links**                                                    |
-| What are Logic Apps?                 |                  <https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps>                   |
-| Call Azure Functions from logic apps | <https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-functions%23call-azure-functions-from-logic-apps> |
+|                                      |                                                                                                               |
+| ------------------------------------ | :-----------------------------------------------------------------------------------------------------------: |
+| **Description**                      |                                                    **Links**                                                  |
+| What are Logic Apps?                 |                 https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps                    |
+| Call Azure Functions from Logic Apps | https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-functions%23call-azure-functions-from-logic-apps |
 
 ### Task 1: Create the Logic App
 
-1. Navigate to the Azure portal, <http://portal.azure.com>.
+1. Open the [Azure Portal Create Logic App Blade] https://portal.azure.com/#create/Microsoft.EmptyWorkflow ). 
 
-2. Select **+ Create a resource**, then enter **logic app** into the search box on top. Select **Logic App** from the results.
+2. On the **Create Logic App** blade, specify the following configuration options:
 
-    ![In the Azure Portal, in the menu, Create a resource is selected. In the New blade, logic ap is typed in the search field, and Logic App is selected in the search results.](media/new-logic-app.png 'Azure Portal')
+    a. Specify the Resource Group **ServerlessArchitecture**.
 
-3. Select the **Create** button on the Logic App overview blade.
-
-4. On the **Create Logic App** blade, specify the following configuration options:
-
-    a. For Name, type a unique value for the App name similar to **TollBoothLogic** (ensure the green check mark appears).
-
-    b. Specify the Resource Group **ServerlessArchitecture**.
+    a. For **Logic app name**, type a unique value similar to **TollBoothLogic** (ensure the green check mark appears).
 
     c. Select the **Region** option for the location, then select the same **Location** as your Resource Group region.
 
-    d. Select **Off** underneath Log Analytics.
+    d. Ensure **Associate with integration service environment** is unchecked.
+
+    d. Ensure **Enable Log Analytics** is unchecked.
 
     ![In the Create logic app blade, fields are set to the previously defined values.](media/create-logic-app.png 'Create logic app blade')
 
@@ -1157,91 +1141,21 @@ In this exercise, you create a new Logic App for your data export workflow. This
 
     ![The Disable button is selected on the TollBoothLogic Logic app blade toolbar menu.](media/image97.png 'TollBoothLogic blade')
 
-## Exercise 7: Configure continuous deployment for your Function App
+## Exercise 7: Complete ExportLicensePlates Function App
 
 **Duration**: 40 minutes
 
-In this exercise, configure your Function App that contains the ProcessImage function for continuous deployment. You will first set up a GitHub source code repository, then set that as the deployment source for the Function App.
+In this exercise, finsish adding code to your Function App and push code to GitHub so it is deployed automatically to Azure.
 
-### Help references
+### Task 1: Finish your ExportLicensePlates Function code and push changes to GitHub to trigger deployment
 
-|                                           |                                                                                    |
-| ----------------------------------------- | :--------------------------------------------------------------------------------: |
-| **Description**                           |                                     **Links**                                      |
-| Creating a new GitHub repository          |           <https://help.github.com/articles/creating-a-new-repository/>            |
-| Continuous deployment for Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment> |
+1. In Visual Studio Code select **Open Folder...** and navigate to the **TollBooth** folder (`hands-on-lab\starter\TollBooth\TollBooth\`) and then choose **Select Folder**.
 
-### Task 1: Add git repository to your Visual Studio solution and deploy to GitHub
+2. From the **Edit** menu in Visual Studio Code select **Find in files** and then search for 'TODO'.
 
-1. Open the **TollBooth** project in Visual Studio.
+3. The results will show you a list of TODO tasks, where each task represents one line of code that needs to be completed.
 
-2. Right-click the **TollBooth** solution in Solution Explorer, then select **Create Git Repository...**.
-
-    ![In Solution Explorer, TollBooth solution is selected. From its right-click context menu, the Create Git Repository item is selected.](media/vs-create-git-repo.png 'Solution Explorer')
-
-3. Click **Sign in...** next to Account under `Create a new GitHub repository`, then select GitHub account.
-
-    ![The sign in button is highlighted.](media/vs-create-git-repo-sign-in.png "Create a Git repository")
-
-4. In the web page that appears, select **Authorize github** to grant Visual Studio additional permissions to work with your GitHub account.
-
-    ![The authorize github button is highlighted.](media/vs-create-git-repo-allow.png "Allow additional permissions")
-
-5. Sign in to your GitHub account. After a few moments, you will see a Success page appear, stating that your authorization was successful. When you see this, go back to Visual Studio.
-
-    ![The success page is displayed.](media/vs-github-auth-successful.png "Your authorization was successful")
-
-6. Complete the form with the following information, then click **Create and Publish**:
-
-    a. **Repository Name**: Enter `serverless-architecture-lab`, or other unique name.
-
-    b. **Private**: Uncheck this option.
-
-    ![The form is completed as described.](media/vs-create-git-repo-create.png "Create a Git repository")
-
-7. Refresh your GitHub repository page in your browser. You should see that the project files have been added. Navigate to the **TollBooth** folder of your repo. Notice that the local.settings.json file has not been uploaded. That's because the .gitignore file of the TollBooth project explicitly excludes that file from the repository, making sure you don't accidentally share your application secrets.
-
-    ![On the GitHub Repository webpage for serverless-architecture-lab, on the Code tab, the project files are displayed.](media/github-repo-page.png 'GitHub Repository page')
-
-### Task 2: Configure your Function App to use your GitHub repository for continuous deployment
-
-1. Open the Azure Function App you created whose name ends with **FunctionApp**, or the name you specified for the Function App containing the ProcessImage function.
-
-2. Select **Deployment Center** underneath Deployment in the left-hand menu.
-
-    ![The Platform features tab is displayed, under Code Deployment, Container settings is selected.](media/functionapp-menu-deployment-center-link.png 'TollBoothFunctionApp blade')
-
-3. Select **GitHub** in the **Deployment Center** blade. Enter your GitHub credentials if prompted. Select **Continue**.
-
-    ![The GitHub tile is selected from a list of repository options.](media/functionapp-dc-github.png 'Deployment Center blade')
-
-4. Select **App Service build service**, then select **Continue**.
-
-    ![Under the Build Provider step, App Service build service tile is selected.](media/functionapp-dc-build-provider.png 'Deployment Center blade')
-
-5. **Choose your organization**.
-
-6. Choose your new repository under **Choose project**. Make sure the **master branch** is selected.
-
-    ![Fields in the Deployment option blade set to the following settings: Choose your organization, obscured; Choose repository, serverless-architecture-lab; Choose branch, master.](media/functionapp-dc-configure.png 'Deployment Center blade')
-
-7. Select **Continue**.
-
-8. On the Summary page, select **Finish**.
-
-9. After continuous deployment is configured, all file changes in your deployment source are copied to the function app and a full site deployment is triggered. The site is redeployed when files in the source are updated.
-
-    ![The Deployment Center tab is shown with a pending build.](media/functionapp-dc.png 'Function App Deployment Center')
-
-### Task 3: Finish your ExportLicensePlates function code and push changes to GitHub to trigger deployment
-
-1. Navigate to the **TollBooth** project using the Solution Explorer of Visual Studio.
-
-2. From the Visual Studio **View** menu, select **Task List**.
-
-    ![Task List is selected from the Visual Studio View menu.](media/image37.png 'Visual Studio View menu')
-
-3. There you will see a list of TODO tasks, where each task represents one line of code that needs to be completed.
+    ![A list of TODO tasks, including their description, project, file, and line number are displayed.](media/vs-task-list.png 'TODO tasks')
 
 4. Open **DatabaseMethods.cs**.
 
@@ -1269,25 +1183,13 @@ In this exercise, configure your Function App that contains the ProcessImage fun
 
 9. Save your changes.
 
-10. Click the **Git** menu in Visual Studio, then select **Commit or Stash...**.
+10. In Visual Studio Code, click on the Git Extension in the left navigation and you should see a series of Changes listed. Enter an appropriate Message and hit Ctrl+Enter to commit them (on Mac Command+Enter).
 
-    ![The Git menu is displayed.](media/vs-commit-or-stash.png "Commit or Stash")
+11. From the Source Control ellipses menu select **Push** to send your changes to GitHub. This may take a few moments to complete.
 
-11. Enter a commit message, then select **Commit All**.
+    ![In Visual Studio Code's Git Extension with the 'Push' option highlighted.](media/git-push.png 'Visual Studio Code Git Extension - Push')
 
-    ![In the Team Explorer - Changes window, "Finished the ExportLicensePlates function" displays in the message box, and the Commit All button is selected.](media/vs-git-commit-all.png 'Team Explorer - Changes window')
-
-12. After committing, select the **Push** button to push your changes to the GitHub repo.
-
-    ![The Push button is highlighted.](media/vs-git-push.png "Push changes")
-
-    Afterward, you should see a message stating that you successfully pushed your changes to the GitHub repository.
-
-    ![The message is displayed.](media/vs-git-push-success.png "Successfully pushed")
-
-13. Go back to Deployment Center for your Function App in the portal. You should see an entry for the deployment kicked off by this last commit. Check the timestamp on the message to verify that you are looking at the latest one. **Make sure the deployment completes before continuing**.
-
-    ![The latest deployment is displayed in the Deployment Center.](media/functionapp-dc-latest.png 'Deployment Center')
+7. In Microsoft Edge, open the **Actions** section of your repository on GitHub and you will see the Action running.
 
 ## Exercise 8: Rerun the workflow and verify data export
 

@@ -50,6 +50,8 @@ You will need a client that supports RDP connections - this is available as part
 
 5. Login to the newly created VM using RDP and the username and password you supplied earlier.
 
+> **NOTE:** If you stop the VM the IP address will change and you will need to download the RDP connection file again once the VM is restarted.
+
 6. After the VM desktop loads, the Server Manager will open automatically.
 
 7. Select **Local Server**.

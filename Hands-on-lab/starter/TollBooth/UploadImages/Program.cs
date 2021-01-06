@@ -67,6 +67,8 @@ namespace UploadImages
                 {
                     foreach (var image in _sourceImages)
                     {
+                        // reset stream position to zero between reads
+                        image.Position = 0;
                         var filename = GenerateRandomFileName();
                         var uploadClient = blobContainer.GetBlobClient(filename);
                         var output = uploadClient.UploadAsync(image);
@@ -81,6 +83,7 @@ namespace UploadImages
                 LoadImagesFromDisk(false);
                 foreach (var image in _sourceImages)
                 {
+                    // only read the streams once so no need to reset between uses
                     var filename = GenerateRandomFileName();
                     var uploadClient = blobContainer.GetBlobClient(filename);
 
@@ -110,14 +113,14 @@ namespace UploadImages
             if (upload1000)
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\..\..\..\license-plates\copyfrom\")
+                    Directory.GetFiles(@"..\..\license-plates\copyfrom\")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
             else
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\..\..\..\license-plates\")
+                    Directory.GetFiles(@"..\..\license-plates\")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
