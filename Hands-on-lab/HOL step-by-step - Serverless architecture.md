@@ -126,8 +126,8 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 |                                            |                                                                                           |
 | ------------------------------------------ | :---------------------------------------------------------------------------------------: |
 | **Description**                            | **Links**                                                                                 |
-| Creating a storage account (blob hot tier) | https://docs.microsoft.com/azure/storage/common/storage-create-storage-account            |
-| Creating a function app                    | https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal     |
+| Creating a Storage Account (blob hot tier) | https://docs.microsoft.com/azure/storage/common/storage-create-storage-account            |
+| Creating a Function app                    | https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal     |
 | Concepts in Event Grid                     | https://docs.microsoft.com/azure/event-grid/concepts                                      |
 | Creating an Azure Cosmos DB account        | https://docs.microsoft.com/azure/cosmos-db/manage-account                                 |
 
@@ -163,13 +163,17 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 
 6. Paste the value into a text editor, such as Notepad, for later reference.
 
-7. Select **Containers** under **Blob Service** in the menu. Then select the **+ Container** button to add a new container. In the **Name** field, enter **images**, select **Private (no anonymous access)** for the public access level, then select **OK** to save.
+7. Select **Containers** under **Blob Service** in the left menu. Then select the **+ Container** button to add a new container. In the **Name** field, enter **images**, select **Private (no anonymous access)** for the public access level, then select **OK** to save.
 
     ![In the Storage blade, under Settings, Containers is selected. In the Containers blade, the + (add icon) Container button is selected. Below, the Name field displays images, and the Public access level is set to Private (no anonymous access).](media/storage-new-container-images.png 'Storage and Containers blade')
 
 8. Repeat these steps to create a container named **export**.
 
     ![In the Storage blade, under Settings, Containers is selected. In the Containers blade, the + (add icon) Container button is selected. Below, the Name field displays export, and the Public access level is set to Private (no anonymous access).](media/new-container-export.png 'Storage and Containers blade')
+
+9. Select **Queues** under **Queue service** in the left menu. Then select the **+ Queue** button to add a new queue. In the **Queue name** field, enter **failedexports**, then select **OK** to create.
+
+    ![In the Storage blade, under Settings, Containers is selected. In the Containers blade, the + (add icon) Container button is selected. Below, the Name field displays export, and the Public access level is set to Private (no anonymous access).](media/setup-queue.png 'Storage and Containers blade')
 
 ### Task 2: Provision the Function Apps
 
@@ -1091,55 +1095,57 @@ In this exercise, you create a new Azure Logic App for your data export workflow
 
     ![Under Azure Functions, in the search results list, Azure Functions (TollBoothFunctionApp) is selected.](media/logic-app-function-app-action.png 'Logic App Designer Azure Functions section')
 
-11. Select the **ExportLicensePlates** function from the list.
+11. Select the **ExportLicensePlates** Function from the list.
 
     ![Under Azure Functions, under Actions (2), Azure Functions (ExportLicensePlates) is selected.](media/logic-app-select-export-function.png 'Logic App Designer Azure Functions section')
 
-12. This function does not require any parameters that need to be sent when it gets called. Select **+ New step**, then search for **condition**. Select the **Condition** Control option from the Actions search result.
+12. This Function does not require any parameters. Select **+ New step**, then search for **condition**. Select the **Condition** Control option from the Actions search result.
 
     ![In the logic app designer, in the ExportLicensePlates section, the parameter field is left blank. In the Choose an action box, condition is entered as the search term and the Condition Control item is selected from the Actions list.](media/logicapp-add-condition.png 'Logic App Designer ExportLicensePlates section')
 
 13. For the **value** field, select the **Status code** parameter. Make sure the operator is set to **is equal to**, then enter **200** in the second value field.
 
-    > **Note**: This evaluates the status code returned from the ExportLicensePlates function, which will return a 200 code when license plates are found and exported. Otherwise, it sends a 204 (NoContent) status code when no license plates were discovered that need to be exported. We will conditionally send an email if any response other than 200 is returned.
+    > **Note**: This evaluates the HTTP status code returned from the ExportLicensePlates Function, which will return a 200 (OK) code when license plates are found and exported. Otherwise, it sends a 204 (NoContent) status code when no license plates were discovered that need to be exported. We will conditionally put a message on a queue if any response other than 200 is returned.
 
     ![The first Condition field displays Status code. The second, drop-down menu field displays is equal to, and the third field is set to 200.](media/logicapp-condition.png 'Condition fields')
 
-14. We will ignore the If true condition because we don't want to perform an action if the license plates are successfully exported. Select **Add an action** within the **If false** condition block.
+14. We will ignore the True condition because we don't want to perform an action if the license plates are successfully exported. Select **Add an action** within the **False** condition block.
 
     ![Under the Conditions field is an If true (green checkmark) section, and an if false (red x) section. In the If false section, the Add an action button is selected.](media/logicapp-condition-false-add.png 'Logic App Designer Condition fields if true/false ')
 
-15. Enter **Send an email** in the filter box, then select the **Send an email (V2)** action for Office 365 Outlook.
+15. Enter **Azure Queues** in the filter box, then select the **Put a message on a queue** action.
 
-    ![In the Choose an action box, send an email is entered as the search term. From the Actions list, Office 365 Outlook (end an email (V2) item is selected.](media/logicapp-send-email.png 'Office 365 Outlook Actions list')
+    ![In the Choose an action box, Azure Queues is entered as the search term. From the Actions list, Put a message on a queue is selected.](media/logicapp-send-message.png 'Azure Queues put a message on queue')
 
-16. Select **Sign in** and sign into your Office 365 Outlook account.
+16. In the Put a message on a queue Action, provide the following values:
 
-    ![In the Office 365 Outlook - Send an email box, the Sign in button is selected.](media/image93.png 'Office 365 Outlook Sign in prompt')
+    a. For **Connection Name** enter **FailedExportQueueConnection**.
 
-17. In the Send an email form, provide the following values:
+    b. For **Storage Account** select the Storage Account from Exercise 1, Task 1 in which you created the **failedexports** queue.
 
-    a. Enter your email address in the **To** box.
+    c. Select **Create**.
 
-    b. Provide a **Subject**, such as **Toll Booth license plate export failed**.
+    ![In the Put a message on a queue Action, fields are set to the previously defined values.](media/logic-app-storage-connection.png 'Logic App Designer , Storage Connection fields')
 
-    c. Enter a message into the **Body**, and select the **Status code** from the ExportLicensePlates function so that it is added to the email body.
+17. The Action will change once connected. For **Queue Name** select **failedexports**. Enter an appropriate message into the **Message field**
 
-    ![In the Send an email box, fields are set to the previously defined values.](media/logicapp-send-email-form.png 'Logic App Designer , Send an email fields')
+    ![In the Put a message on a queue Action, fields are set to the previously defined values.](media/logic-app-message-queue-message.png 'Logic App Designer , Queue message fields')
 
-18. Select **Save** in the tool bar to save your Logic App.
+    > **Note:** if you don't see 'failedexports' as an option it may be that you selected the wrong storage account. You can use **Change connection** to connect to the right account.
 
-19. Select **Run** to execute the Logic App. You should start receiving email alerts because the license plate data is not being exported. This is because we need to finish making changes to the ExportLicensePlates function so that it can extract the license plate data from Azure Cosmos DB, generate the CSV file, and upload it to Blob storage.
+18. Select **Save** at the top left in the editor tool bar to save your Logic App.
 
-    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicapp-start.png 'Logic Apps Designer blade')
+19. Select **Run** to execute the Logic App.
+
+    ![The Run button is selected on the Logic Apps Designer blade toolbar.](media/logicapp-start.png 'Logic Apps - Run')
 
 20. While in the Logic Apps Designer, you will see the run result of each step of your workflow. A green checkmark is placed next to each step that successfully executed, showing the execution time to complete. This can be used to see how each step is working, and you can select the executed step and see the raw output.
 
     ![In the Logic App Designer, green check marks display next to Recurrence, ExportLicensePlates, Condition, and Send an email steps of the logic app.](media/image96.png 'Logic App Designer ')
 
-21. The Logic App will continue to run in the background, executing every 15 minutes (or whichever interval you set) until you disable it. To disable the app, go to the **Overview** blade for the Logic App and select the **Disable** button on the taskbar.
+21. In your browser navigate to the Azure Storage Account that contains the queue you are using and then review the new message that was published due to the failed export.
 
-    ![The Disable button is selected on the TollBoothLogic Logic app blade toolbar menu.](media/image97.png 'TollBoothLogic blade')
+    ![In the Azure Portal with a Storage Queue open, showing a message on the queue.](media/storage-queue-failed-message.png 'Azure Storage Queue showing message in queue')
 
 ## Exercise 7: Complete ExportLicensePlates Function App
 
@@ -1197,15 +1203,13 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
 With the latest Function App code changes in place, re-run your Logic App and verify that the files are successfully exported.
 
+>**Note:** if wish to run through these Exercises multiple times you will need to upload new license plate files using the `UploadImages` application from Exercise 4, Task 1.
+
 ### Task 1: Run the Logic App
 
 1. Open your **ServerlessArchitecture** resource group in the Azure portal, then select your Logic App.
 
-2. From the **Overview** blade, select **Enable**.
-
-    ![In the TollBoothLogic Logic app blade, Overview is selected in the left menu, and the Enable enable button is selected in the right pane.](media/image113.png 'TollBoothLogic blade')
-
-3. Now select **Run Trigger**, then select **Recurrence** to immediately execute your workflow.
+3. Select **Run Trigger**, then select **Recurrence** to immediately execute your workflow.
 
     ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/image114.png 'TollBoothLogic blade')
 

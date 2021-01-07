@@ -50,10 +50,18 @@ namespace TollBooth
             var resiliencyStrategy = DefineAndRetrieveResiliencyStrategy();
 
             // Configure the HttpClient request headers.
-            _client.DefaultRequestHeaders.Clear();
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            try
+            {
+                _client.DefaultRequestHeaders.Clear();
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch (System.ArgumentException)
+            {
+                // Non-fatal, most likely threading issue
+                _log.LogWarning("Tried to add duplicate header to HTTP Client.");
+            }
 
             // Assemble the URI for the REST API Call.
             var uri = uriBase + "?" + requestParameters;
