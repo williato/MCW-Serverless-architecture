@@ -1161,7 +1161,7 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
     ![A list of TODO tasks, including their description, project, file, and line number are displayed.](media/vs-task-list.png 'TODO tasks')
 
-4. Open `DatabaseMethods.cs`**`.
+4. Open `DatabaseMethods.cs`.
 
 5. The following code represents the completed task in `DatabaseMethods.cs`:
 
