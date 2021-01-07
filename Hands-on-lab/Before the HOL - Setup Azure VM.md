@@ -75,11 +75,12 @@ You will need a client that supports RDP connections - this is available as part
 11. Please install the pre-requisite software on the VM:
 
    - Git (https://git-scm.com/) - accept all defaults when installing
+   - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
+   - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
+   - Azure Functions Core Tools (https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
    - Visual Studio Code (https://code.visualstudio.com/download). Install these extensions ([instructions for extensions](https://code.visualstudio.com/docs/editor/extension-gallery)):
       - Azure Functions
       - C#
-   - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
-   - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
 
 Once Git is installed you will need to configure two defaults before first use. Open a command prompt and run these two commands, substituting values as required:
 

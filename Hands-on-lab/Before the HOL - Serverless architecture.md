@@ -38,11 +38,12 @@ The names of manufacturers, products, or URLs are provided for informational pur
 - Microsoft Azure subscription (non-Microsoft subscription). You can create a free account at https://azure.com/free.
 - Local machine or an Azure virtual machine configured with:
   - Git (https://git-scm.com/) - accept all defaults when installing.
+  - Azure Functions Core Tools (https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+  - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
+  - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
   - Visual Studio Code (https://code.visualstudio.com/download). Install these extensions ([instructions for extensions](https://code.visualstudio.com/docs/editor/extension-gallery)):
     - Azure Functions
     - C#
-  - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
-  - .NET 5 (https://dotnet.microsoft.com/download/dotnet/5.0) SDK
   - Modern web browser such as Microsoft Edge (https://www.microsoft.com/edge) - make sure to set it as your default (edge://settings/defaultBrowser)
 - GitHub account. You can create a free account at https://github.com/join.
 

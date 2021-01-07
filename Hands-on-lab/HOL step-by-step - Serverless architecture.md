@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2020
+January 2021
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -507,7 +507,7 @@ When you are done creating the values, you should have a list similar to the fol
 @Microsoft.KeyVault(SecretUri=https://tollboothvault.vault.azure.net/secrets/eventGridTopicKey/e310bcd71a72489f89b6112234fed815)
 ```
 
-## Exercise 2: Develop and publish the photo processing and data export functions
+## Exercise 2: Develop and publish the photo processing and data export Functions
 
 **Duration**: 45 minutes
 
@@ -625,7 +625,7 @@ The first set of TODO items we will address are in the ProcessImage function, th
 
 6. Open `FindLicensePlateText.cs`. This class is responsible for contacting the Computer Vision API to find and extract the license plate text from the photo, using Optical Character Recognition (OCR). Notice that this class also shows how you can implement a resilience pattern using [Polly](https://github.com/App-vNext/Polly), an open source .NET library that helps you handle transient errors. This is useful for ensuring that you do not overload downstream services, in this case, the Computer Vision API. This will be demonstrated later on when visualizing the Function's scalability.
 
-7. The following code represents the completed task in FindLicensePlateText.cs  - update the file as shown:
+7. The following code represents the completed task in `FindLicensePlateText.cs`  - update the file as shown:
 
     ```csharp
     // TODO 2: Populate the below two variables with the correct AppSettings properties.
@@ -633,7 +633,7 @@ The first set of TODO items we will address are in the ProcessImage function, th
     var apiKey = Environment.GetEnvironmentVariable("computerVisionApiKey");
     ```
 
-8. Open **SendToEventGrid.cs**. This class is responsible for sending an Event to the Event Grid Topic, including the event type and license plate data. Event subscribers will use the event type to filter and act on the events they need to process. Make note of the event types defined here (the first parameter passed into the Send method), as they will be used later on when creating new Functions in the second Function App you provisioned earlier.
+8. Open `SendToEventGrid.cs`. This class is responsible for sending an Event to the Event Grid Topic, including the event type and license plate data. Event subscribers will use the event type to filter and act on the events they need to process. Make note of the event types defined here (the first parameter passed into the Send method), as they will be used later on when creating new Functions in the second Function App you provisioned earlier.
 
 9. The following code represents the completed tasks in `SendToEventGrid.cs`:
 
@@ -1163,9 +1163,9 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
     ![A list of TODO tasks, including their description, project, file, and line number are displayed.](media/vs-task-list.png 'TODO tasks')
 
-4. Open **DatabaseMethods.cs**.
+4. Open `DatabaseMethods.cs`**`.
 
-5. The following code represents the completed task in DatabaseMethods.cs:
+5. The following code represents the completed task in `DatabaseMethods.cs`:
 
     ```csharp
         // TODO 5: Retrieve a List of LicensePlateDataDocument objects from the collectionLink where the exported value is false.
@@ -1178,9 +1178,9 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
 6. Make sure that you deleted the following line under TODO 6: `licensePlates = new List<LicensePlateDataDocument>();`.
 
-7. Save your changes then open **FileMethods.cs**.
+7. Save your changes then open `FileMethods.cs`.
 
-8. The following code represents the completed task in DatabaseMethods.cs:
+8. The following code represents the completed task in `FileMethods.cs`:
 
     ```csharp
     // TODO 7: Asyncronously upload the blob from the memory stream.
@@ -1215,7 +1215,7 @@ With the latest Function App code changes in place, re-run your Logic App and ve
 
     ![In the TollBoothLogic Logic app blade, Run Trigger and Recurrence are selected.](media/image114.png 'TollBoothLogic blade')
 
-4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to Blob storage. Be sure to disable the Logic App so it doesn't keep sending you emails every 15 minutes. Please note that it may take longer than expected to start running, in some cases.
+4. Select the **Refresh** button next to the Run Trigger button to refresh your run history. Select the latest run history item. If the expression result for the condition is **true**, then that means the CSV file should've been exported to Blob storage. You can see that the False path has not executed because of the grey cross.
 
     ![In Logic App Designer, in the Condition section, under Inputs, true is highlighted.](media/image115.png 'Logic App Designer ')
 
@@ -1235,30 +1235,28 @@ With the latest Function App code changes in place, re-run your Logic App and ve
 
     ![In the Export blade, under Name, a .csv file is selected.](media/blob-export.png 'Export blade')
 
-5. Select **Download** in the blob properties window.
-
-    ![In the Blob properties blade, the Download button is selected.](media/blob-download.png 'Blob properties blade')
-
-    The CSV file should look similar to the following:
+5. Select **Edit** in the blob properties window to view the contents of the CSV.
 
     ![A CSV file displays with the following columns: FileName, LicensePlateText, TimeStamp, and LicensePlateFound.](media/csv.png 'CSV file')
 
-6. The ExportLicensePlates function updates all of the records it exported by setting the exported value to true. This makes sure that only new records since the last export are included in the next one. Verify this by re-executing the script in Azure Cosmos DB that counts the number of documents in the Processed collection where exported is false. It should return 0 unless you've subsequently uploaded new photos.
+6. The **ExportLicensePlates** Function updates all of the Cosmos DB records it exported by setting the exported value to true. This makes sure that only new records since the last export are included. Verify this by re-executing the script in Azure Cosmos DB (Excercise 5, Step 9) that counts the number of items in the Processed collection where the exported property is 'false'. It should return 0 unless you've subsequently uploaded new photos.
 
 ## After the hands-on lab
 
-**Duration**: 10 minutes
+**Duration**: 5 minutes
 
 In this exercise, attendees will deprovision any Azure resources that were created in support of the lab.
 
 ### Task 1: Delete the resource group in which you placed your Azure resources
 
-1. From the Portal, navigate to the blade of your **Resource Group** and select **Delete** in the command bar at the top.
+1. In the Azure Portal, navigate to the blade of your **Resource Group** and select **Delete** in the command bar at the top.
+
+    ![In the Export blade, under Name, a .csv file is selected.](media/delete-rg.png 'Export blade')
 
 2. Confirm the deletion by re-typing the **resource group name** and selecting **Delete**.
 
-3. If you created a different resource group for your virtual machine, be sure to delete that as well.
+3. If you created a different Resource Group for your Lab Virtual Machine, be sure to delete that as well.
 
-4. Optionally, delete the GitHub repository you created for this lab by selecting **settings** and then **Delete this repository** from the GitHub website.
+4. Optionally, delete the GitHub repository you created for this lab by selecting **settings** and then **Delete this repository** from the GitHub website. You can always Fork the original again in future.
 
 You should follow these steps provided _after_ attending the Hands-on lab.
