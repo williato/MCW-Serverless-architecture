@@ -1197,6 +1197,8 @@ In this exercise, finsish adding code to your Function App and push code to GitH
 
 7. In Microsoft Edge, open the **Actions** section of your repository on GitHub and you will see the Action running.
 
+    ![On GitHub showing a running GitHub Action.](media/github-actions-running.png 'GitHub Actions running')
+
 ## Exercise 8: Rerun the Logic App and verify data export
 
 **Duration**: 10 minutes
