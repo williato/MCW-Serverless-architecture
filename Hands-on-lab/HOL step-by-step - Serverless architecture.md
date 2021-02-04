@@ -601,7 +601,7 @@ The first set of TODO items we will address are in the ProcessImage function, th
 
 4. Open `ProcessImage.cs`. Notice that the Run method is decorated with the FunctionName attribute, which sets the name of the Azure Function to "ProcessImage". This is triggered by HTTP requests sent to it from Event Grid. This request is the result of an Event subscription for the Function, which you will do in a later task, subscribing to "blob-created" events. The Function's trigger watches for new blobs being added to the images container of the storage account created in Exercise 1. The data passed to the Function from Event Grid includes the URL of the blob which is passed to the input binding of the Function to obtain the binary data of the uploaded image.
 
-5. The following code represents the completed task in ProcessImage.cs - update the file as shown:
+5. The following code represents the completed task in `ProcessImage.cs` - update the file as shown:
 
     ```csharp
     // **TODO 1: Set the licensePlateText value by awaiting a new FindLicensePlateText.GetLicensePlate method.**
@@ -648,7 +648,7 @@ When you cloned this repository you also cloned the necessary GitHub Actions cod
 
     ![On GitHub, showing how to set Repository Secrets using Settings.](media/actions-github-secret.png 'Setting a GitHub repository secret')
 
-4. Open the `main.yml` file from the '.guthub\workflows' folder using Visual Studio Code and change the placeholder **YOURFUNCTIONAPPNAME** with the actual name of your Azure Function.
+4. Open the `main.yml` file from the '.guthub\workflows' folder using Visual Studio Code and change the placeholder **YOURFUNCTIONAPPNAME** with the actual name of your Azure Function Apps
 
 5. In Visual Studio Code, click on the Git Extension in the left navigation and you should see a series of Changes listed. Enter an appropriate Message and hit Ctrl+Enter to commit them (on Mac Command+Enter).
 
