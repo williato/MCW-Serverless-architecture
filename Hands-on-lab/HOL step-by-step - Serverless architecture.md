@@ -918,7 +918,7 @@ Application Insights can be integrated with Azure Function Apps to provide robus
 
     ![In the TollBoothMonitor blade, in the pane under Investigate, Live Metrics Stream is selected. ](media/live-metrics-link.png 'TollBoothMonitor blade')
 
-3. In Visual Studio Code close any open project and open the `UploadImages` folder.
+3. In Visual Studio Code close any open project and open the `UploadImages` folder you cloned as part of this repository.
 
 4. Open a new Terminal in Visual Studio Code by selecting **Terminal** in the menu and **New Terminal**.
 
@@ -1044,7 +1044,7 @@ In this exercise, you create a new Azure Logic App for your data export workflow
 
 ### Task 1: Create the Logic App
 
-1. Open the [Azure Portal Create Logic App Blade] https://portal.azure.com/#create/Microsoft.EmptyWorkflow ). 
+1. Open the [Azure Portal Create Logic App Blade](https://portal.azure.com/#create/Microsoft.EmptyWorkflow). 
 
 2. On the **Create Logic App** blade, specify the following configuration options:
 
