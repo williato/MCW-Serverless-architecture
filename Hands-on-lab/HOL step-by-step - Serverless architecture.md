@@ -161,7 +161,7 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 
 6. Paste the value into a text editor, such as Notepad, for later reference.
 
-7. Select **Containers** under **Blob Service** in the left menu. Then select the **+ Container** button to add a new container. In the **Name** field, enter **images**, select **Private (no anonymous access)** for the public access level, then select **OK** to save.
+7. Select **Containers** under **Blob Service** in the left menu. Then select the **+ Container** button to add a new container. In the **Name** field, enter **images**, select **Private (no anonymous access)** for the public access level, then select **Create** to create the container.
 
     ![In the Storage blade, under Settings, Containers is selected. In the Containers blade, the + (add icon) Container button is selected. Below, the Name field displays images, and the Public access level is set to Private (no anonymous access).](media/storage-new-container-images.png 'Storage and Containers blade')
 
@@ -187,7 +187,7 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 
     d. **Publish**: Select **Code**.
 
-    e. **Runtime stack**: Select **.NET Core**.
+    e. **Runtime stack**: Select **.NET**.
 
     f. **Version**: Select **3.1**.
 
@@ -211,24 +211,15 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 
     a. **Enable Application Insights**: Select **Yes**.
 
-    b. **Application Insights**: Select **Create new**.
+    b. Leave other options 'as is'.
 
-    ![In the Monitoring tab of the Create Function App blade, the form fields are set to the previously defined values.](media/new-functionapp-net-monitoring.png "Function App Monitoring blade")
-
-6. In the `Create new Application Insights` dialog, provide the following information, then select **OK**:
-
-    a. **Name**: Unique value for the App name similar to **TollboothMonitor** (ensure the green check mark appears).
-    b. **Location**: Select the same Azure region you selected for your Function App.
-
-    ![The new Application Insights form is configured as described.](media/new-app-insights.png "Create new Application Insights")
-
-7. Select **Review + create**, then select **Create** to provision the new Function App.
+6. Select **Review + create**, then select **Create** to provision the new Function App.
 
     ![The Review + create button is highlighted.](media/new-functionapp-net-monitoring-review.png "Function App Monitoring")
 
-8. **Repeat steps 1-3** to create a second Function App.
+7. **Repeat steps 1-3** to create a second Function App.
 
-9. Within the **Create Function App** blade *Basics* tab, specify the following configuration options:
+8. Within the **Create Function App** blade *Basics* tab, specify the following configuration options:
 
     a. **Subscription**: Select your Azure subscription for this lab.
 
@@ -406,9 +397,7 @@ In this exercise, you will provision an Azure Blob Storage Account using the Hot
 
     ![In the Create Computer Vision blade, fields are set to the previously defined values.](media/create-computer-vision.png 'Create blade')
 
-3. Select **Create**.
-
-    ![Screenshot of the Create button.](media/image13.png 'Create button')
+3. Select **Review + create** then **Create**.
 
 4. After the Computer Vision API has completed provisioning, open the service by opening the **ServerlessArchitecture** resource group, and then selecting the **Computer Vision** **API** service name.
 
@@ -525,7 +514,7 @@ The starter project, TollBooth, contains most of the code needed. You will add i
 
 In order for your Function App to access Key Vault and read secrets, you must [create a system-assigned managed identity](https://docs.microsoft.com/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity) for the Function App, and [create an access policy in Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#key-vault-access-policies) for the application identity.
 
-1. Open the **ServerlessArchitecture** resource group, and then select the Azure Function App you created whose name ends with **FunctionApp**. This is the one you created using the **.NET Core** runtime stack. If you did not use this naming convention, that's fine. Just be sure to make note of the name so you can distinguish it from the Function App you will be developing using the portal later on.
+1. Open the **ServerlessArchitecture** resource group, and then select the Azure Function App you created whose name ends with **FunctionApp**. This is the one you created using the **.NET** runtime stack. If you did not use this naming convention, that's fine. Just be sure to make note of the name so you can distinguish it from the Function App you will be developing using the portal later on.
 
     ![In the ServerlessArchitecture resource group, the TollBoothFunctionApp is selected.](media/image33.png 'ServerlessArchitecture resource group')
 
@@ -541,26 +530,24 @@ In this task, you will apply application settings using the Microsoft Azure Port
 
     ![In the TollBoothFunctionApp blade on the Overview tab, under Configured features, the Configuration item is selected.](media/image34.png 'TollBoothFunctionApp blade')
 
-2. In the **Application settings** section use the **+ New application setting** option to create the following additional Key/Value pairs (the key names must exactly match those found in the table below). **Be sure to remove the curly braces (`{}`)**.
+2. Scroll to the **Application settings** section. Use the **+ New application setting** link to create the following additional Key/Value pairs (the key names must exactly match those found in the table below). **Be sure to remove the curly braces (`{}`)**.
+
+| **Application Key** | **Value** |
+| ------------------------ | :----------------------------------------------------------------------------------------------------: |
+| computerVisionApiUrl     | Computer Vision API endpoint you copied earlier. Append **vision/v2.0/ocr** to the end. Example: `https://<YOUR-SERVICE-NAME>.cognitiveservices.azure.com/vision/v2.0/ocr` |
+| computerVisionApiKey     | Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **computerVisionApiKey** Key Vault secret                                                                   |
+| eventGridTopicEndpoint   | Event Grid Topic endpoint                                                                  |
+| eventGridTopicKey        | Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **eventGridTopicKey** Key Vault secret                                                                 |
+| cosmosDBEndPointUrl      | Cosmos DB URI                                                                        |
+| cosmosDBAuthorizationKey | Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **cosmosDBAuthorizationKey** Key Vault secret                                                                    |
+| cosmosDBDatabaseId       | Cosmos DB database id (LicensePlates)                                                            |
+| cosmosDBCollectionId     | Cosmos DB processed collection id (Processed)                                                        |
+| exportCsvContainerName   | Blob storage CSV export container name (export)                                                       |
+| blobStorageConnection    | Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **blobStorageConnection** Key Vault secret                                                                |
 
 > **NOTE:** if you would like to quickly add these settings you can modify the [function-app-setting.json](function-app-setting.json) file and then copy/paste it using the **Advanced edit** to add the new settings. Make sure you don't overwrite the existing settings when doing this. Make sure to paste inside of the JSON array in the editor in the Azure Portal.
 
-
-    |                          |                                                                                                                                                             |
-    | ------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------: |
-    | **Application Key**      |                                                                          **Value**                                                                          |
-    | computerVisionApiUrl     | Computer Vision API endpoint you copied earlier. Append **vision/v2.0/ocr** to the end. Example: `https://<YOUR-SERVICE-NAME>.cognitiveservices.azure.com/vision/v2.0/ocr` |
-    | computerVisionApiKey     |                                                                   Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **computerVisionApiKey** Key Vault secret                                                                   |
-    | eventGridTopicEndpoint   |                                                                  Event Grid Topic endpoint                                                                  |
-    | eventGridTopicKey        |                                                                 Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **eventGridTopicKey** Key Vault secret                                                                 |
-    | cosmosDBEndPointUrl      |                                                                        Cosmos DB URI                                                                        |
-    | cosmosDBAuthorizationKey |                                                                    Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **cosmosDBAuthorizationKey** Key Vault secret                                                                    |
-    | cosmosDBDatabaseId       |                                                            Cosmos DB database id (LicensePlates)                                                            |
-    | cosmosDBCollectionId     |                                                        Cosmos DB processed collection id (Processed)                                                        |
-    | exportCsvContainerName   |                                                       Blob storage CSV export container name (export)                                                       |
-    | blobStorageConnection    |                                                               Enter `@Microsoft.KeyVault(SecretUri={referenceString})`, where `{referenceString}` is the URI for the **blobStorageConnection** Key Vault secret                                                                |
-
-    ![In the Application Settings section, the previously defined key / value pairs are displayed.](media/application-settings.png 'Application Settings section')
+![In the Application Settings section, the previously defined key / value pairs are displayed.](media/application-settings.png 'Application Settings section')
 
 3. Select **Save**.
 
