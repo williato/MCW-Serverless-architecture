@@ -99,7 +99,7 @@ The solution begins with vehicle photos being uploaded to an Azure Storage blobs
 
 ## Requirements
 
-- Microsoft Azure subscription (non-Microsoft subscription). You can create a free account at https://azure.com/free.
+- Microsoft Azure subscription. You can create a free account at https://azure.com/free. MSDN and Azure Passes will work fine.
 - Local machine or an Azure virtual machine configured with:
   - Git (https://git-scm.com/) - accept all defaults when installing
   - Visual Studio Code (https://code.visualstudio.com/download). Install these extensions ([instructions for extensions](https://code.visualstudio.com/docs/editor/extension-gallery)):
