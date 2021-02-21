@@ -44,21 +44,29 @@ You will need a client that supports RDP connections - this is available as part
 
    > If the request fails please check that the name ('myVM') you specified is unique and the VM size you selected is available in the region you are using. 
 
-4. Once the machine is created you can download the RDP file to remotely connect to it. Navigate to the VM in the Azure Portal and then click **Connect** in the VM Overview blade.
+4. Once the machine is created you can define an auto-shutdown policy for the VM. This will ensure your Azure credits or spending is controlled. Replace 'myVM' with your selected VM name. Also replace 'time' with the UTC time (24 hour clock) you wish to shutdown at.
+
+   ```bash
+   az vm auto-shutdown \
+   --resource-group ServerlessArchitecture \ 
+   --name MyVm \
+   --time 1000 
+   ```
+5. You can download the RDP file to remotely connect to the VM. Navigate to the VM in the Azure Portal and then click **Connect** in the VM Overview blade.
 
    ![Azure Portal VM Blade with download RDP selected.](images/Setup/image10.png 'Download the RDP configuration selected')
 
-5. Login to the newly created VM using RDP and the username and password you supplied earlier.
+6. Login to the newly created VM using RDP and the username and password you supplied earlier.
 
-> **NOTE:** If you stop the VM the IP address will change and you will need to download the RDP connection file again once the VM is restarted.
+> **NOTE:** If you stop the VM its IP address will change and you will need to download the RDP connection file again once the VM is restarted.
 
-6. After the VM desktop loads, the Server Manager will open automatically.
+7. After the VM desktop loads, the Server Manager will open automatically.
 
-7. Select **Local Server**.
+8. Select **Local Server**.
 
    ![Local Server is selected from the Server Manager menu.](images/Setup/image5.png 'Server Manager menu')
 
-8. On the right hand side of the Server Manager look for **IE Enhanced Security Configuration**, and then select where it reads **On**.
+9. On the right hand side of the Server Manager look for **IE Enhanced Security Configuration**, and then select where it reads **On**.
 
    ![The IE Enhanced Security Configuration setting is set to On. The On item is selected.](images/Setup/image6.png 'IE Enhanced Security Configuration')
 
@@ -68,11 +76,11 @@ You will need a client that supports RDP connections - this is available as part
 
 > **NOTE**: Some aspects of these labs require the use of the new Microsoft Edge (Chromium edition) browser. You may find yourself blocked if using Internet Explorer later in the lab.
 
-9. Launch Internet Explorer and download [Microsoft Edge](https://www.microsoft.com/edge).
+10. Launch Internet Explorer and download [Microsoft Edge](https://www.microsoft.com/edge).
 
-10. Follow the setup instructions and set Edge as the default browser by opening edge://settings/defaultBrowser and selecting **Make default**.
+11. Follow the setup instructions and set Edge as the default browser by opening edge://settings/defaultBrowser and selecting **Make default**.
 
-11. Please install the pre-requisite software on the VM:
+12. Please install the pre-requisite software on the VM:
 
    - Git (https://git-scm.com/) - accept all defaults when installing
    - .NET Core 3.1 (https://dotnet.microsoft.com/download/dotnet-core/3.1) SDK
