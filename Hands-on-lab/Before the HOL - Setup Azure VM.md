@@ -28,7 +28,7 @@ You will need a client that supports RDP connections - this is available as part
 
    ![Azure Portal navigation with Cloud Shell icon highlighted.](images/Setup/image11.png 'Azure Portal navigation with Cloud Shell icon highlighted')
 
-2. When prompted, create a new Storage Account for your Cloud Shell environment. Create it in the Resource group you created earlier. You can select either Bash or PowerShell for your Cloud Shell environment.
+2. When prompted, create a new Storage Account for your Cloud Shell environment. Create it in the Resource group you created in the [main setup guide](Before%20the%20HOL%20-%20Serverless%20architecture.md). You can select either Bash or PowerShell for your Cloud Shell environment.
 
 3. Once the Cloud Shell prompt is loaded you can use the following command to create a new Windows server instance. Make sure to replace 'myVM' with a unique hostname. When prompted set a strong password.
 
