@@ -30,12 +30,12 @@ namespace TollBooth
             if (data.LicensePlateFound)
             {
                 // TODO 3: Modify send method to include the proper eventType name value for saving plate data.
-                // COMPLETE: await Send(...);
+                await Send("savePlateData", "TollBooth/CustomerService", data);
             }
             else
             {
                 // TODO 4: Modify send method to include the proper eventType name value for queuing plate for manual review.
-                // COMPLETE: await Send(...);
+                await Send("queuePlateForManualCheckup", "TollBooth/CustomerService", data);
             }
         }
 
@@ -46,7 +46,7 @@ namespace TollBooth
             var key = Environment.GetEnvironmentVariable("eventGridTopicKey");
 
             _log.LogInformation($"Sending license plate data to the {eventType} Event Grid type");
-            
+
             var events = new List<Event<LicensePlateData>>
             {
                 new Event<LicensePlateData>()

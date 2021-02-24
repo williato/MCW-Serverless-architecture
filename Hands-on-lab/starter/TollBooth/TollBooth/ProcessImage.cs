@@ -35,7 +35,7 @@ namespace TollBooth
         }
 
         [FunctionName("ProcessImage")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent,
+        public static async Task Run([EventGridTrigger] EventGridEvent eventGridEvent,
             [Blob(blobPath: "{data.url}", access: FileAccess.Read,
                 Connection = "blobStorageConnection")] Stream incomingPlate,
             ILogger log)
@@ -61,8 +61,8 @@ namespace TollBooth
                     }
 
                     // TODO 1: Set the licensePlateText value by awaiting a new FindLicensePlateText.GetLicensePlate method.
-                    // COMPLETE: licensePlateText = await new.....
-                    
+                    licensePlateText = await new FindLicensePlateText(log, _client).GetLicensePlate(licensePlateImage);
+
                     // Send the details to Event Grid.
                     await new SendToEventGrid(log, _client).SendLicensePlateData(new LicensePlateData()
                     {
