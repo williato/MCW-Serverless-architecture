@@ -21,7 +21,7 @@ namespace UploadImages
 
         static int Main(string[] args)
         {
-           if (args.Length == 0)
+            if (args.Length == 0)
             {
                 Console.WriteLine("You must pass the Blob Storage connection string as an argument when executing this application.");
                 Console.ReadLine();
@@ -103,7 +103,7 @@ namespace UploadImages
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
             var rando = new string(Enumerable.Repeat(chars, randomStringLength)
-              .Select(s => s[Random.Next(s.Length)]).ToArray());
+                .Select(s => s[Random.Next(s.Length)]).ToArray());
             return $"{rando}.jpg";
         }
 
@@ -113,14 +113,14 @@ namespace UploadImages
             if (upload1000)
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\license-plates\copyfrom\")
+                    Directory.GetFiles(@"../../license-plates/copyfrom/")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
             else
             {
                 _sourceImages =
-                    Directory.GetFiles(@"..\..\license-plates\")
+                    Directory.GetFiles(@"../../license-plates/")
                         .Select(f => new MemoryStream(File.ReadAllBytes(f)))
                         .ToList();
             }
